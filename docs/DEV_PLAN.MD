@@ -6,11 +6,9 @@
 
 ## 0. Подготовка
 
-0.1 Инициализировать проект (Vite + React + TS)
-0.2 Настроить Storybook, ESLint, Prettier
-0.3 Создать структуру папок (app, api, stores, pages, features, components, shared)
-0.4 Настроить API client (api/client.ts)
-0.5 Добавить типы в shared/types
+0.1 Инициализировать проект (Vite + React + TS) ✅  
+0.2 Настроить Storybook, ESLint, Prettier ✅  
+0.3 Создать структуру папок (app, api, stores, pages, features, components, shared) ✅  
 
 ---
 

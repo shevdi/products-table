@@ -1,1 +1,1 @@
-export const PLACEHOLDER = 'products-table'
+export const PLACEHOLDER = 'products-table';
