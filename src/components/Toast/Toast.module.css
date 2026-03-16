@@ -1,0 +1,59 @@
+/* Toast - BEM: toast (block), toast__viewport, toast__root, toast__title, toast__description, toast__close (elements) */
+
+.toast__viewport {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 420px;
+  width: calc(100vw - 48px);
+  z-index: 9999;
+}
+
+.toast__root {
+  position: relative;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 16px 44px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.toast__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.toast__description {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.toast__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.toast__close:hover {
+  background-color: var(--color-muted);
+  color: var(--color-text-primary);
+}
