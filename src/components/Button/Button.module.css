@@ -1,8 +1,7 @@
 .button {
-  --button-bg: var(--color-primary, #3b82f6);
-  --button-color: var(--color-primary-contrast, #fff);
+  --button-bg: var(--color-primary);
+  --button-color: var(--color-primary-contrast);
   --button-border: transparent;
-  --button-font-size: 0.875rem;
   --button-gap: 1rem;
 
   display: inline-flex;
@@ -40,8 +39,8 @@
 
 .button--secondary {
   --button-bg: transparent;
-  --button-color: var(--color-text, #374151);
-  --button-border: var(--color-border, #d1d5db);
+  --button-color: var(--color-text);
+  --button-border: var(--color-border);
 
   background-color: var(--button-bg);
   color: var(--button-color);
@@ -49,12 +48,12 @@
 }
 
 .button--secondary:hover:not(:disabled) {
-  background-color: var(--color-muted, #f3f4f6);
+  background-color: var(--color-muted);
 }
 
 .button--sm {
   height: 28px;
-  --button-font-size: 0.8125rem;
+  font-size: var(--font-size-sm);
 }
 
 .button--lg {

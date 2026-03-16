@@ -23,13 +23,13 @@ export default meta;
 
 type Story = StoryObj<typeof Icon & { color?: string }>;
 
-const COLOR_SAMPLES = ['#333333', '#e74c3c', '#3498db', '#2ecc71', '#9b59b6'] as const;
+const COLOR_SAMPLES = ['var(--color-text-primary)', '#e74c3c', '#3498db', '#2ecc71', '#9b59b6'] as const;
 
 export const Default: Story = {
   args: {
     name: 'search',
     size: 24,
-    color: '#333333',
+    color: 'var(--color-text-primary)',
   },
   render: (args) => (
     <Icon
@@ -68,7 +68,7 @@ export const AllIcons: Story = {
           }}
         >
           <Icon name={name} size={args.size} />
-          <span style={{ fontSize: '12px', color: '#666' }}>{name}</span>
+          <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>{name}</span>
         </div>
       ))}
     </div>
@@ -104,7 +104,7 @@ export const Colors: Story = {
           }}
         >
           <Icon name={args.name} size={args.size} style={{ color }} />
-          <span style={{ fontSize: '12px', color: '#666' }}>{color}</span>
+          <span style={{ fontSize: '12px', color: 'var(--color-text-secondary)' }}>{color}</span>
         </div>
       ))}
     </div>

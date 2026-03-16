@@ -4,6 +4,27 @@
   --font-size-lg: 18px;
   --font-size-xl: 30px;
   --font-size-2xl: 40px;
+
+  /* Neutral Palette */
+  --color-white: #FFFFFF;
+  --color-background-light: #F8F8F8;
+  --color-border-light: #E0E0E0;
+  --color-text-placeholder: #AAAAAA;
+  --color-text-secondary: #555555;
+  --color-text-primary: #333333;
+
+  /* Brand/Accent */
+  --color-brand-primary-blue: #546FFF;
+  --color-brand-secondary-blue: #4D7DFF;
+  --color-background-selected-row: #F0F4FF;
+  --color-status-danger: #FF4D4D;
+
+  /* Semantic aliases */
+  --color-primary: var(--color-brand-primary-blue);
+  --color-primary-contrast: var(--color-white);
+  --color-muted: var(--color-background-light);
+  --color-text: var(--color-text-primary);
+  --color-border: var(--color-border-light);
 }
 
 *, *::before, *::after {
