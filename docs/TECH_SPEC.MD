@@ -106,6 +106,7 @@ https://www.figma.com/design/NO3iFfoTbjHhDCt9whuQLo/Aiti-Guru-%D1%82%D0%B5%D1%81
 - Zustand
 - React Hook Form
 - Zod
+- clsx
 - eslint
 - prettier
 
