@@ -1,2 +1,2 @@
-// Modal component - to be implemented
-export {};
+export { Modal } from './Modal';
+export type { ModalProps } from './Modal';
