@@ -53,7 +53,7 @@
   --input-radius: 12px;
 }
 
-.input__leading {
+.input__slot {
   display: flex;
   flex-shrink: 0;
   align-items: center;
@@ -74,13 +74,6 @@
 
 .input__field::placeholder {
   color: var(--color-text-placeholder);
-}
-
-.input__trailing {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  color: var(--color-text-secondary);
 }
 
 .input__clear,

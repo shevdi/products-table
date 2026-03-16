@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Reusable compound Input component with leading/trailing slots, clear button, password visibility toggle, label, error display, and React Hook Form compatibility for use in AuthForm, ProductSearch, and AddProductForm.
+Reusable compound Input component with slots (addons), clear button, password visibility toggle, label, error display, and React Hook Form compatibility for use in AuthForm, ProductSearch, and AddProductForm.
 
 ## Requirements
 
@@ -15,20 +15,16 @@ The project SHALL have an Input component in `src/components/Input/` implemented
 - **THEN** all child components receive shared context (value, onChange, error, disabled, size)
 
 #### Scenario: Input.Box wraps field and slots
-- **WHEN** Input.Box wraps Input.Leading, Input.Field, and Input.Trailing
+- **WHEN** Input.Box wraps Input.Slot and Input.Field in any order
 - **THEN** they are laid out in a row with border, radius, and focus styling
 
-#### Scenario: Input.Leading renders left slot
-- **WHEN** Input.Leading wraps content (e.g. Icon)
-- **THEN** the content is rendered to the left of the input field
+#### Scenario: Input.Slot renders addon
+- **WHEN** Input.Slot wraps content (e.g. Icon, Input.Clear, Input.PasswordToggle)
+- **THEN** the content is rendered at its position in the flex order (before or after Field)
 
 #### Scenario: Input.Field renders native input
 - **WHEN** Input.Field is used inside Input.Root
 - **THEN** a native `<input>` is rendered and participates in the context (value, onChange)
-
-#### Scenario: Input.Trailing renders right slot
-- **WHEN** Input.Trailing wraps content (e.g. Input.Clear, Input.PasswordToggle)
-- **THEN** the content is rendered to the right of the input field
 
 #### Scenario: Input.Clear clears the field
 - **WHEN** Input.Clear is used and the field has a non-empty value
