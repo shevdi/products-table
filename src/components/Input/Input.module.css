@@ -1,0 +1,118 @@
+.input-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input {
+  --input-border: var(--color-border);
+  --input-bg: var(--color-white);
+  --input-height: 48px;
+  --input-radius: 8px;
+  --input-padding-x: 16px;
+  --input-gap: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: var(--input-gap);
+  width: 100%;
+  min-height: var(--input-height);
+  padding: 0 var(--input-padding-x);
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  transition: border-color 0.15s;
+}
+
+.input:focus-within {
+  --input-border: var(--color-primary);
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.input--error {
+  --input-border: var(--color-status-danger);
+}
+
+.input--error:focus-within {
+  outline-color: var(--color-status-danger);
+}
+
+.input--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.input--sm {
+  --input-height: 48px;
+  --input-radius: 8px;
+}
+
+.input--md {
+  --input-height: 55px;
+  --input-radius: 12px;
+}
+
+.input__leading {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  color: var(--color-text-secondary);
+}
+
+.input__field {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.input__field::placeholder {
+  color: var(--color-text-placeholder);
+}
+
+.input__trailing {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  color: var(--color-text-secondary);
+}
+
+.input__clear,
+.input__password-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: inherit;
+  transition: background-color 0.15s;
+}
+
+.input__clear:hover,
+.input__password-toggle:hover {
+  background-color: var(--color-muted);
+}
+
+.input__label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.input__error {
+  display: block;
+  margin-top: 6px;
+  font-size: var(--font-size-sm);
+  color: var(--color-status-danger);
+}

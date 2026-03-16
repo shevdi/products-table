@@ -6,6 +6,7 @@ export const ICON_NAMES = [
   'user',
   'close',
   'lock',
+  'eye',
   'eye-off',
   'logo',
 ] as const;

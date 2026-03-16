@@ -31,6 +31,18 @@ The project SHALL have each icon in a separate file under `src/components/Icon/I
 - **WHEN** any icon component is rendered
 - **THEN** it outputs SVG elements (path, circle, etc.) with currentColor
 
+### Requirement: Eye icon exists for password visibility
+
+The project SHALL have an `eye` icon for use in password visibility toggle (paired with `eye-off`).
+
+#### Scenario: Eye icon renders
+- **WHEN** Icon receives `name="eye"`
+- **THEN** the corresponding eye icon (open eye, no slash) is displayed
+
+#### Scenario: Eye icon in Icon.types
+- **WHEN** developer inspects Icon.types.ts
+- **THEN** `eye` is included in ICON_NAMES
+
 ### Requirement: Icon has stories
 
 The Icon component SHALL have Storybook stories.
