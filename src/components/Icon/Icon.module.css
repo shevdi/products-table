@@ -1,0 +1,27 @@
+.icon {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  color: inherit;
+}
+
+/* Позволяет менять цвет через CSS color */
+.icon path,
+.icon [stroke] {
+  stroke: currentColor;
+}
+
+.icon path[fill],
+.icon [fill]:not([fill='none']) {
+  fill: currentColor;
+}
+
+.icon--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.icon--lg {
+  width: 24px;
+  height: 24px;
+}

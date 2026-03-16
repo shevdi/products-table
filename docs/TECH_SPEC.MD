@@ -89,6 +89,8 @@ https://www.figma.com/design/NO3iFfoTbjHhDCt9whuQLo/Aiti-Guru-%D1%82%D0%B5%D1%81
 - Feature-Driven Architecture.
 - CSS modules. БЭМ. Без лишних библиотек. Предпочтительнее CSS variables. Использовать кастомные стили.
 - Использовать radix-ui primitives.
+- Иконки в одном компоненте
+- stories хранить рядом с компонентами
 - Compound components, особенно для базовой таблицы.
 - Tanstack Table для таблицы.
 

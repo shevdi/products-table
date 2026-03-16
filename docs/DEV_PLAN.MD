@@ -14,15 +14,17 @@
 
 ## 1. Базовые компоненты (Storybook)
 
-1.1 Button
-1.2 Input
-1.3 Checkbox
-1.4 Modal
-1.5 Toast
-1.6 ProgressBar
-1.7 Pagination
-1.8 Table (compound components, Tanstack Table)
-1.9 Стили: CSS modules, БЭМ, CSS variables
+Стили: CSS modules, БЭМ, CSS variables
+Stories: хранить параллельно с компонентами
+1.1 Icons ✅
+1.2 Button
+1.3 Input
+1.4 Checkbox
+1.5 Modal
+1.6 Toast
+1.7 ProgressBar
+1.8 Pagination
+1.9 Table (compound components, Tanstack Table)
 
 ---
 
