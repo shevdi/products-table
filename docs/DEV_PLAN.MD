@@ -19,7 +19,7 @@ Stories: хранить параллельно с компонентами
 1.1 Icons ✅
 1.2 Button ✅
 1.3 Input ✅
-1.4 Checkbox
+1.4 Checkbox ✅
 1.5 Modal
 1.6 Toast
 1.7 ProgressBar

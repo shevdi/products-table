@@ -91,6 +91,7 @@ flowchart LR
 | `/opsx:propose tanstack-query` + «Настроить API client»  | Change: apiFetch, QueryClientProvider, base URL                                |
 | `/opsx:propose app-structure`                            | Change: app/, api/, stores/, pages/, features/, components/, shared/           |
 | `/opsx:propose components` + изображения                 | basic-components-storybook: Button, Input, Checkbox, Modal, Toast, Table и др. |
+| `/opsx:propose checkbox-component` + «1. создать новые цвета в переменных: unchecked-#B2B3B9, checked=#3C538E. 2. композитный Checkbox. 3. Состояние одно и размер один. 4. Будет использоваться в Table, фильтрах и формах. 5. Без CheckboxGroup. 6. С Accessibility» | Change: CSS-переменные, Checkbox (Radix), один вариант, использование в Table/фильтрах/формах, без группы, a11y |
 | `/opsx:apply`                                            | Реализация задач из tasks.md (button, icon, app-structure, tanstack-query)     |
 | `/opsx:explore button-component` + JSON Figma            | Разбор Figma-данных, сравнение с реализацией, предложение story Login          |
 | `/opsx:explore button` + «Создать компонент в storybook» | Анализ: story-first vs component-first, порядок по DEV_PLAN                    |

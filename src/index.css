@@ -19,6 +19,10 @@
   --color-background-selected-row: #F0F4FF;
   --color-status-danger: #FF4D4D;
 
+  /* Checkbox */
+  --color-checkbox-unchecked: #B2B3B9;
+  --color-checkbox-checked: #3C538E;
+
   /* Semantic aliases */
   --color-primary: var(--color-brand-primary-blue);
   --color-primary-contrast: var(--color-white);
