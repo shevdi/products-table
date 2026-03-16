@@ -21,8 +21,8 @@ Stories: хранить параллельно с компонентами
 1.3 Input ✅
 1.4 Checkbox ✅
 1.5 Modal ✅
-1.6 Toast
-1.7 ProgressBar
+1.6 Toast ✅
+1.7 ProgressBar ✅
 1.8 Pagination
 1.9 Table (compound components, Tanstack Table)
 

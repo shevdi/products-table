@@ -1,2 +1,2 @@
-// ProgressBar component - to be implemented
-export {};
+export { ProgressBar } from './ProgressBar';
+export type { ProgressBarProps } from './ProgressBar';
