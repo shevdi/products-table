@@ -1,0 +1,97 @@
+/* Pagination - BEM: pagination (block), pagination__* (elements), pagination__page--active (modifier) */
+
+.pagination {
+  --pagination-active-bg: #797FEA;
+  --pagination-active-color: #FFFFFF;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pagination__range {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.pagination__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pagination__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, opacity 0.15s;
+}
+
+.pagination__arrow:hover:not(:disabled) {
+  background-color: var(--color-muted);
+}
+
+.pagination__arrow:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination__arrow:focus-visible {
+  outline: 2px solid var(--pagination-active-bg);
+  outline-offset: 2px;
+}
+
+.pagination__page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.pagination__page:hover:not(.pagination__page--active) {
+  background-color: var(--color-muted);
+}
+
+.pagination__page--active {
+  background-color: var(--pagination-active-bg);
+  color: var(--pagination-active-color);
+  border-color: var(--pagination-active-bg);
+  cursor: default;
+}
+
+.pagination__page:focus-visible {
+  outline: 2px solid var(--pagination-active-bg);
+  outline-offset: 2px;
+}
+
+.pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}

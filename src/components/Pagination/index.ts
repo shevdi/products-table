@@ -1,2 +1,2 @@
-// Pagination component - to be implemented
-export {};
+export { Pagination } from './Pagination';
+export type { PaginationProps } from './Pagination';
