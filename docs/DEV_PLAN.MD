@@ -30,14 +30,13 @@ Stories: хранить параллельно с компонентами
 
 ## 2. Авторизация
 
-2.1 LoginPage
+2.1 LoginPage ✅
 2.2 api/auth.ts — метод login
 2.3 authStore (Zustand): token, user, remember me
 2.4 AuthForm: валидация (React Hook Form + Zod), обработка ошибок
-2.5 LoginPage
-2.6 Protected routes: / и /products требуют авторизации
-2.7 Редирект неавторизованных на /login
-2.8 Логика remember me: localStorage vs sessionStorage
+2.5 Protected routes: / и /products требуют авторизации
+2.6 Редирект неавторизованных на /login
+2.7 Логика remember me: localStorage vs sessionStorage
 
 ---
 

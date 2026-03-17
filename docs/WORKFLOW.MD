@@ -96,6 +96,7 @@ flowchart LR
 | `/opsx:explore button-component` + JSON Figma            | Разбор Figma-данных, сравнение с реализацией, предложение story Login          |
 | `/opsx:explore button` + «Создать компонент в storybook» | Анализ: story-first vs component-first, порядок по DEV_PLAN                    |
 | `/opsx:archive`                                          | Синхронизация specs, перемещение в archive/                                    |
+| `/opsx:propose` + «1. ProductTable добавляет колонку с кастомным header cell, который рендерит Checkbox, а BaseTable только вызывает header.column.columnDef.header(). 2. Логика рендера ячеек определяется в column defs, а BaseTable только выполняет render через flexRender. 3. Состояние выбранных строк (selectedRowIds / rowSelection) передаётся в Root, а строки получают selected state через TanStack row API. 4. Для текстовых колонок применяется truncation по умолчанию с возможностью переопределения через настройки колонки. 5. Если у ячейки есть состояние, то им управляет родительский компонент. ProductTable рендерит кнопки + и ⋮ через custom cell и управляет состоянием. 6. Sort indicators рендерятся BaseTable, стрелки (↑↓) рядом с заголовком. 7. Используем семантичную таблицу. 8. При 0 строк — дефолтное значение в BaseTable, которое можно переопределить.» | Создан change с proposal, design, specs, tasks |
 
 
 ### 5.2 Explore: обсуждение и уточнение
