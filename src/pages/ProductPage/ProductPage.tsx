@@ -1,5 +1,7 @@
-import { useState, useCallback } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useCallback, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useDebounce } from 'use-debounce';
 import type { SortingState, Updater } from '@tanstack/react-table';
 import { fetchProducts } from '@/api/products';
 import { ProductTable } from '@/features/ProductTable';
@@ -11,32 +13,114 @@ import { Icon } from '@/components/Icon';
 import styles from './ProductPage.module.css';
 
 const PAGE_SIZE = 5;
+const SEARCH_DEBOUNCE_MS = 500;
+
+const URL_KEYS = {
+  search: 'q',
+  page: 'page',
+  sortBy: 'sortBy',
+  order: 'order',
+} as const;
+
+function parseSearchParams(searchParams: URLSearchParams) {
+  const search = searchParams.get(URL_KEYS.search) ?? '';
+  const page = Math.max(1, parseInt(searchParams.get(URL_KEYS.page) ?? '1', 10) || 1);
+  const sortBy = searchParams.get(URL_KEYS.sortBy) ?? undefined;
+  const order = (searchParams.get(URL_KEYS.order) ?? 'asc') as 'asc' | 'desc';
+
+  const sorting: SortingState =
+    sortBy && ['name', 'brand', 'sku', 'rating', 'price'].includes(sortBy)
+      ? [{ id: sortBy, desc: order === 'desc' }]
+      : [];
+
+  return { search, page, sorting };
+}
+
+function buildSearchParams(search: string, page: number, sorting: SortingState): URLSearchParams {
+  const params = new URLSearchParams();
+  if (search) params.set(URL_KEYS.search, search);
+  if (page > 1) params.set(URL_KEYS.page, String(page));
+  const [sort] = sorting;
+  if (sort) {
+    params.set(URL_KEYS.sortBy, sort.id);
+    params.set(URL_KEYS.order, sort.desc ? 'desc' : 'asc');
+  }
+  return params;
+}
 
 export function ProductPage() {
-  const [search, setSearch] = useState('');
-  const [page, setPage] = useState(1);
-  const [sorting, setSorting] = useState<SortingState>([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { search, page, sorting } = useMemo(() => parseSearchParams(searchParams), [searchParams]);
 
-  const handleSearchChange = useCallback((value: string) => {
-    setSearch(value);
-    setPage(1);
-  }, []);
+  const [debouncedSearch] = useDebounce(search, SEARCH_DEBOUNCE_MS);
+
+  const updateParams = useCallback(
+    (updates: { search?: string; page?: number; sorting?: SortingState }) => {
+      const nextSearch = updates.search ?? search;
+      const nextPage = updates.page ?? page;
+      const nextSorting = updates.sorting ?? sorting;
+      setSearchParams(buildSearchParams(nextSearch, nextPage, nextSorting), { replace: true });
+    },
+    [search, page, sorting, setSearchParams]
+  );
+
+  const handleSearchChange = useCallback(
+    (value: string) => {
+      updateParams({ search: value, page: 1 });
+    },
+    [updateParams]
+  );
+
+  const handlePageChange = useCallback(
+    (newPage: number) => {
+      updateParams({ page: newPage });
+    },
+    [updateParams]
+  );
+
+  const handleSortingChange = useCallback(
+    (updater: Updater<SortingState>) => {
+      const next = typeof updater === 'function' ? updater(sorting) : updater;
+      updateParams({ sorting: next, page: 1 });
+    },
+    [sorting, updateParams]
+  );
+
+  const queryClient = useQueryClient();
+  const queryKey = useMemo(
+    () => ['products', debouncedSearch, page, sorting] as const,
+    [debouncedSearch, page, sorting]
+  );
 
   const { data, isLoading } = useQuery({
-    queryKey: ['products', search, page],
+    queryKey,
     queryFn: () =>
       fetchProducts({
-        search: search || undefined,
+        search: debouncedSearch || undefined,
         limit: PAGE_SIZE,
         skip: (page - 1) * PAGE_SIZE,
+        sortBy: sorting[0]?.id,
+        order: sorting[0]?.desc ? 'desc' : 'asc',
       }),
   });
 
   const products = data?.products ?? [];
   const totalItems = data?.total ?? 0;
 
-  const handleSortingChange = (updater: Updater<SortingState>) => {
-    setSorting((prev) => (typeof updater === 'function' ? updater(prev) : updater));
+  const handleRefresh = () => {
+    queryClient.removeQueries({ queryKey });
+    queryClient.fetchQuery({
+      queryKey,
+      queryFn: () =>
+        fetchProducts({
+          search: debouncedSearch || undefined,
+          limit: PAGE_SIZE,
+          skip: (page - 1) * PAGE_SIZE,
+          sortBy: sorting[0]?.id,
+          order: sorting[0]?.desc ? 'desc' : 'asc',
+          cache: 'no-store',
+        }),
+    });
   };
 
   return (
@@ -52,7 +136,12 @@ export function ProductPage() {
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Все позиции</h2>
           <div className={styles.sectionActions}>
-            <button type="button" className={styles.refreshBtn} aria-label="Обновить">
+            <button
+              type="button"
+              className={styles.refreshBtn}
+              aria-label="Обновить"
+              onClick={handleRefresh}
+            >
               <Icon name="reload" size={20} />
             </button>
             <button type="button" className={styles.addBtn}>
@@ -68,7 +157,7 @@ export function ProductPage() {
           page={page}
           totalItems={totalItems}
           pageSize={PAGE_SIZE}
-          onPageChange={setPage}
+          onPageChange={handlePageChange}
         />
       </div>
     </div>

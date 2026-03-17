@@ -43,9 +43,9 @@ Stories: хранить параллельно с компонентами
 ## 3. Список товаров
 
 3.1 ProductPage ✅
-3.2 api/products.ts — fetch, pagination, sort
-3.3 Tanstack Query: useProducts (limit 5, skip, sortBy, order)
-3.4 ProductTable: колонки по макету (наименование, вендор, артикул, оценка, цена)
+3.2 api/products.ts — fetch, pagination, sort ✅
+3.3 Tanstack Query: useProducts (limit 5, skip, sortBy, order) ✅
+3.4 ProductTable: колонки по макету (наименование, вендор, артикул, оценка, цена) ✅
 3.5 Прогресс-бар при загрузке ✅
 3.6 Сортировка по столбцам, состояние в URL (query params)
 3.7 Пагинация (5 товаров на страницу) ✅
@@ -55,9 +55,9 @@ Stories: хранить параллельно с компонентами
 
 ## 4. Поиск
 
-4.1 ProductSearch: поле ввода с debounce 500ms
-4.2 Интеграция с API search (пустой запрос → весь список)
-4.3 Связка ProductSearch + ProductTable на ProductPage
+4.1 ProductSearch: поле ввода с debounce 500ms ✅
+4.2 Интеграция с API search (пустой запрос → весь список) ✅
+4.3 Связка ProductSearch + ProductTable на ProductPage ✅
 
 ---
 
@@ -74,7 +74,7 @@ Stories: хранить параллельно с компонентами
 
 ## 6. Полировка
 
-6.1 Сверстать элементы без логики: «Создать», «+», «...», Refresh
-6.2 app/providers, app/router
-6.3 Интеграция всех фич в приложение
+6.1 Сверстать элементы без логики: «Создать», «+», «...», Refresh ✅
+6.2 app/providers, app/router ✅
+6.3 Интеграция всех фич в приложение ✅
 6.4 Финальная проверка по TECH_SPEC

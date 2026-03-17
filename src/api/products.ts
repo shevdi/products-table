@@ -30,17 +30,41 @@ const mapApiProduct = (p: ApiProduct): Product => ({
   thumbnail: p.thumbnail,
 });
 
+const COLUMN_TO_API_FIELD: Record<string, string> = {
+  name: 'title',
+  brand: 'brand',
+  sku: 'sku',
+  rating: 'rating',
+  price: 'price',
+};
+
 export async function fetchProducts(params?: {
   search?: string;
   limit?: number;
   skip?: number;
+  sortBy?: string;
+  order?: 'asc' | 'desc';
+  cache?: RequestCache;
 }): Promise<{ products: Product[]; total: number }> {
   const limit = params?.limit ?? 5;
   const skip = params?.skip ?? 0;
+  const sortBy = params?.sortBy ? COLUMN_TO_API_FIELD[params.sortBy] ?? params.sortBy : undefined;
+  const order = params?.order ?? 'asc';
+
+  const searchParams = new URLSearchParams();
+  if (params?.search) searchParams.set('q', params.search);
+  searchParams.set('limit', String(limit));
+  searchParams.set('skip', String(skip));
+  if (sortBy) {
+    searchParams.set('sortBy', sortBy);
+    searchParams.set('order', order);
+  }
+
   const path = params?.search
-    ? `/products/search?q=${encodeURIComponent(params.search)}&limit=${limit}&skip=${skip}`
-    : `/products?limit=${limit}&skip=${skip}`;
-  const res = await apiFetch<ProductsResponse>(path);
+    ? `/products/search?${searchParams.toString()}`
+    : `/products?${searchParams.toString()}`;
+  const fetchOptions = params?.cache ? { cache: params.cache } : undefined;
+  const res = await apiFetch<ProductsResponse>(path, fetchOptions);
   return {
     products: res.products.map(mapApiProduct),
     total: res.total,

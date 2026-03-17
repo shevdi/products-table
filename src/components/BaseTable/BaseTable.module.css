@@ -27,14 +27,6 @@
   color: var(--color-text-primary);
 }
 
-.baseTable__th:first-child {
-  padding-right: 0;
-}
-
-.baseTable__th:nth-child(2) {
-  padding-left: 8px;
-}
-
 .baseTable__th_sortable {
   cursor: pointer;
 }
@@ -60,13 +52,6 @@
   color: var(--color-text-primary);
 }
 
-.baseTable__td:first-child {
-  padding-right: 0;
-}
-
-.baseTable__td:nth-child(2) {
-  padding-left: 8px;
-}
 
 .baseTable__td_truncate {
   overflow: hidden;

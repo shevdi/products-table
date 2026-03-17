@@ -8,6 +8,7 @@ export async function apiFetch<T>(
   const url = path.startsWith('http') ? path : `${BASE_URL}${path.startsWith('/') ? '' : '/'}${path}`;
   const res = await fetch(url, {
     ...options,
+    cache: options?.cache,
     headers: {
       'Content-Type': 'application/json',
       ...options?.headers,
