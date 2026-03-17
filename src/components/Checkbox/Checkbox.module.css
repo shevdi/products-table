@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 20px;
 }
 
 .checkbox__box {
@@ -70,4 +69,5 @@
   color: var(--color-checkbox-unchecked);
   cursor: pointer;
   user-select: none;
+  margin-left: 15px;
 }

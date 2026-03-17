@@ -102,8 +102,7 @@ export function BaseTable<TData>({
                   className={clsx(
                     styles.baseTable__th,
                     header.column.getCanSort() && styles.baseTable__th_sortable
-                  )}
-                  style={{ width: header.getSize() }}>
+                  )}>
                   <div
                     className={styles.baseTable__headerContent}
                     onClick={header.column.getToggleSortingHandler()}

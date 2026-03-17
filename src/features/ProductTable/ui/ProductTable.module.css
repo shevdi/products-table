@@ -1,7 +1,32 @@
 .productTable__nameCell {
   display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.productTable__nameCellThumb {
+  flex-shrink: 0;
+}
+
+.productTable__nameCellImg {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.productTable__nameCellPlaceholder {
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-muted);
+  border-radius: 4px;
+}
+
+.productTable__nameCellText {
+  display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
 }
 
 .productTable__nameCellTitle {

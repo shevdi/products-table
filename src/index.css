@@ -29,6 +29,7 @@
   --color-muted: var(--color-background-light);
   --color-text: var(--color-text-primary);
   --color-border: var(--color-border-light);
+  --color-background-white: var(--color-white);
 }
 
 *, *::before, *::after {
@@ -68,7 +69,14 @@ body {
 
 #root {
   min-height: 100vh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #f3f3f3;
+}
+
+#root > * {
+  max-width: 100%;
+  min-width: 0;
 }
