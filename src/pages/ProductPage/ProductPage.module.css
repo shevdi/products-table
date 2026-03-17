@@ -11,10 +11,31 @@
   background-color: var(--color-background-white);
 }
 
+.pageContent > * {
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 30px 0;
+  justify-content: start;
+}
+
 .pageSearch {
-  padding: 20px;
-  margin: 20px 0;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color-background-white);
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.pageSearchContent {
+  display: flex;
+  gap: 60px;
+  max-width: 1900px;
+}
+
+.pageSearch  > * {
+  max-width: 1900px;
+  margin: 0 auto;
+  padding: 30px 0;
 }
 
 .pageTitle {
@@ -26,6 +47,7 @@
 
 .pageHeader {
   margin-bottom: 16px;
+  width: clamp(300px, 100%, 1023px);
 }
 
 .sectionHeader {
@@ -90,4 +112,11 @@
 
 .pagination {
   margin-top: 16px;
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 20px;
 }

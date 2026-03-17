@@ -1,15 +1,16 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useDebounce } from 'use-debounce';
 import type { SortingState, Updater } from '@tanstack/react-table';
 import { fetchProducts } from '@/api/products';
-import { ProductTable } from '@/features/ProductTable';
+import { AddProductForm, ProductTable } from '@/features/ProductTable';
 import { ProductSearch } from '@/features/ProductSearch';
 import { ProgressBar } from '@/components/ProgressBar';
 import { Pagination } from '@/components/Pagination';
 import { Logout } from '@/features/auth';
 import { Icon } from '@/components/Icon';
+import { Modal } from '@/components/Modal';
 import styles from './ProductPage.module.css';
 
 const PAGE_SIZE = 5;
@@ -107,6 +108,8 @@ export function ProductPage() {
   const products = data?.products ?? [];
   const totalItems = data?.total ?? 0;
 
+  const [addModalOpen, setAddModalOpen] = useState(false);
+
   const handleRefresh = () => {
     queryClient.removeQueries({ queryKey });
     queryClient.fetchQuery({
@@ -127,9 +130,11 @@ export function ProductPage() {
     <div className={styles.page}>
       <Logout />
       <div className={styles.pageSearch}>
-        <h1 className={styles.pageTitle}>Товары</h1>
-        <div className={styles.pageHeader}>
-          <ProductSearch value={search} onChange={handleSearchChange} />
+        <div className={styles.pageSearchContent}>
+          <h1 className={styles.pageTitle}>Товары</h1>
+          <div className={styles.pageHeader}>
+            <ProductSearch value={search} onChange={handleSearchChange} />
+          </div>
         </div>
       </div>
       <div className={styles.pageContent}>
@@ -144,7 +149,7 @@ export function ProductPage() {
             >
               <Icon name="reload" size={20} />
             </button>
-            <button type="button" className={styles.addBtn}>
+            <button type="button" className={styles.addBtn} onClick={() => setAddModalOpen(true)}>
               <Icon name="plus-circle" size={20} />
               Добавить
             </button>
@@ -160,6 +165,10 @@ export function ProductPage() {
           onPageChange={handlePageChange}
         />
       </div>
+      <Modal open={addModalOpen} onOpenChange={setAddModalOpen}>
+        <h2 className={styles.modalTitle}>Добавить товар</h2>
+        <AddProductForm onSuccess={() => setAddModalOpen(false)} />
+      </Modal>
     </div>
   );
 }
