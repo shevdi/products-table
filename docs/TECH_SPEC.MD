@@ -93,6 +93,8 @@ https://www.figma.com/design/NO3iFfoTbjHhDCt9whuQLo/Aiti-Guru-%D1%82%D0%B5%D1%81
 - stories хранить рядом с компонентами
 - Compound components
 - Tanstack Table для таблицы.
+- Tanstack Query для запросов.
+- zustand. Испоьзовать immer middleware. slices for auth and table page
 
 ## Используемые технологии
 

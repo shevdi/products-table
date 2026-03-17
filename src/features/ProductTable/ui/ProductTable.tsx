@@ -3,7 +3,7 @@ import type { ColumnDef, SortingState, OnChangeFn } from '@tanstack/react-table'
 import { BaseTable } from '@/components/BaseTable';
 import { Button } from '@/components/Button';
 import { Icon } from '@/components/Icon';
-import { useSelectedProductsStore } from '@/stores/selectedProductsStore';
+import { useSelectedProductsStore } from '../model/selectedProductsStore';
 import type { Product } from '@/shared/types/product';
 import styles from './ProductTable.module.css';
 

@@ -1,0 +1,70 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rememberRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.button {
+  width: 100%;
+  height: 54px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 100%
+  ),
+  var(--login-accent, #2436db);
+  border: 1px solid var(--login-accent-border, #367aff);
+  box-shadow:
+    inset 0 -2px 1px rgba(0, 0, 0, 0.08),
+    0 8px 8px rgba(55, 122, 255, 0.03);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.button:hover:not(:disabled) {
+  opacity: 0.95;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.separatorLine {
+  flex: 1;
+  height: 1px;
+  background-color: #ededed;
+}
+
+.separatorText {
+  font-size: 14px;
+  color: #e0e0e0;
+}

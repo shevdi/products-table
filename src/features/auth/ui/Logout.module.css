@@ -1,0 +1,9 @@
+.logoutBtn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  min-width: 36px;
+  padding: 8px;
+  border: none;
+  z-index: 10;
+}

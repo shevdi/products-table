@@ -1,2 +1,2 @@
-export { ProductTable } from './ProductTable';
-export type { ProductTableProps } from './ProductTable';
+export { ProductTable } from './ui/ProductTable';
+export type { ProductTableProps } from './ui/ProductTable';
