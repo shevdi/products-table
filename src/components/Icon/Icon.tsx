@@ -8,13 +8,15 @@ export { ICON_NAMES, type IconName } from './Icon.types';
 export interface IconProps extends Omit<SVGProps<SVGSVGElement>, 'name'> {
   name: IconName;
   size?: number;
+  /** false — сохранить цвета из SVG (синий фон, белый плюс и т.д.) */
+  inheritColor?: boolean;
 }
 
 function isIconName(name: string): name is IconName {
   return ICON_NAMES.includes(name as IconName);
 }
 
-export function Icon({ name, size = 24, className, ...props }: IconProps) {
+export function Icon({ name, size = 24, inheritColor = true, className, ...props }: IconProps) {
   if (!isIconName(name)) {
     return null;
   }
@@ -23,11 +25,12 @@ export function Icon({ name, size = 24, className, ...props }: IconProps) {
   if (!IconComponent) {
     return null;
   }
+  const iconClass = inheritColor ? styles.icon : `${styles.icon} ${styles.iconFixed}`;
   return (
     <IconComponent
       width={size}
       height={size}
-      className={className ? `${styles.icon} ${className}` : styles.icon}
+      className={className ? `${iconClass} ${className}` : iconClass}
       {...props}
     />
   );

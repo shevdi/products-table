@@ -91,7 +91,7 @@ https://www.figma.com/design/NO3iFfoTbjHhDCt9whuQLo/Aiti-Guru-%D1%82%D0%B5%D1%81
 - Использовать radix-ui primitives.
 - Иконки в одном компоненте
 - stories хранить рядом с компонентами
-- Compound components, особенно для базовой таблицы.
+- Compound components
 - Tanstack Table для таблицы.
 
 ## Используемые технологии

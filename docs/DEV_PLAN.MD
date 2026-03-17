@@ -23,33 +23,34 @@ Stories: хранить параллельно с компонентами
 1.5 Modal ✅
 1.6 Toast ✅
 1.7 ProgressBar ✅
-1.8 Pagination
-1.9 Table (compound components, Tanstack Table)
+1.8 Pagination ✅
+1.9 Table ✅
 
 ---
 
 ## 2. Авторизация
 
-2.1 api/auth.ts — метод login
-2.2 authStore (Zustand): token, user, remember me
-2.3 AuthForm: валидация (React Hook Form + Zod), обработка ошибок
-2.4 LoginPage
-2.5 Protected routes: / и /products требуют авторизации
-2.6 Редирект неавторизованных на /login
-2.7 Логика remember me: localStorage vs sessionStorage
+2.1 LoginPage
+2.2 api/auth.ts — метод login
+2.3 authStore (Zustand): token, user, remember me
+2.4 AuthForm: валидация (React Hook Form + Zod), обработка ошибок
+2.5 LoginPage
+2.6 Protected routes: / и /products требуют авторизации
+2.7 Редирект неавторизованных на /login
+2.8 Логика remember me: localStorage vs sessionStorage
 
 ---
 
 ## 3. Список товаров
 
-3.1 api/products.ts — fetch, pagination, sort
-3.2 Tanstack Query: useProducts (limit 5, skip, sortBy, order)
-3.3 ProductTable: колонки по макету (наименование, вендор, артикул, оценка, цена)
-3.4 Прогресс-бар при загрузке
-3.5 Сортировка по столбцам, состояние в URL (query params)
-3.6 Пагинация (5 товаров на страницу)
-3.7 Подсветка рейтинга < 3 красным
-3.8 ProductPage
+3.1 ProductPage
+3.2 api/products.ts — fetch, pagination, sort
+3.3 Tanstack Query: useProducts (limit 5, skip, sortBy, order)
+3.4 ProductTable: колонки по макету (наименование, вендор, артикул, оценка, цена)
+3.5 Прогресс-бар при загрузке
+3.6 Сортировка по столбцам, состояние в URL (query params)
+3.7 Пагинация (5 товаров на страницу)
+3.8 Подсветка рейтинга < 3 красным
 
 ---
 

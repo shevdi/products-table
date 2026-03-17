@@ -1,9 +1,11 @@
 import { create } from 'zustand';
 
 interface SelectedProductsState {
-  selectedIds: number[];
+  selectedIds: string[];
+  setSelectedIds: (ids: string[]) => void;
 }
 
-export const useSelectedProductsStore = create<SelectedProductsState>(() => ({
+export const useSelectedProductsStore = create<SelectedProductsState>((set) => ({
   selectedIds: [],
+  setSelectedIds: (ids) => set({ selectedIds: ids }),
 }));

@@ -10,6 +10,8 @@ import LockIcon from './LockIcon.svg?react';
 import EyeOffIcon from './EyeOffIcon.svg?react';
 import EyeIcon from './EyeIcon.svg?react';
 import LogoIcon from './LogoIcon.svg?react';
+import PlusClickIcon from './PlusClickIcon.svg?react';
+import ArrowsClockwiseIcon from './ArrowsClockwise.svg?react';
 
 export const iconComponents: Record<IconName, ComponentType<SVGProps<SVGSVGElement>>> = {
   search: SearchIcon,
@@ -17,6 +19,8 @@ export const iconComponents: Record<IconName, ComponentType<SVGProps<SVGSVGEleme
   eye: EyeIcon,
   'eye-off': EyeOffIcon,
   'plus-circle': PlusCircleIcon,
+  'plus-click': PlusClickIcon,
+  'arrows-clockwise': ArrowsClockwiseIcon,
   dots: DotsIcon,
   user: UserIcon,
   close: CloseIcon,

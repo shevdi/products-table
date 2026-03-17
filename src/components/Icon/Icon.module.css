@@ -5,14 +5,14 @@
   color: inherit;
 }
 
-/* Позволяет менять цвет через CSS color */
-.icon path,
-.icon [stroke] {
+/* Позволяет менять цвет через CSS color (кроме iconFixed) */
+.icon:not(.iconFixed) path,
+.icon:not(.iconFixed) [stroke] {
   stroke: currentColor;
 }
 
-.icon path[fill],
-.icon [fill]:not([fill='none']) {
+.icon:not(.iconFixed) path[fill],
+.icon:not(.iconFixed) [fill]:not([fill='none']) {
   fill: currentColor;
 }
 

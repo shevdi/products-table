@@ -7,6 +7,6 @@ context: >
   - Использовать radix-ui primitives.
   - Иконки в одном компоненте
   - stories хранить рядом с компонентами
-  - Compound components, особенно для базовой таблицы.
+  - Compound components
   - Tanstack Table для таблицы.
   Используемые технологии: Vite, React, React Router, TS, Storybook, Tanstack Query, Tanstack Table, Zustand, React Hook Form, Zod, eslint, prettier
