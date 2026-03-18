@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import styles from './MainPage.module.css';
 
-function MainPage() {
+export function MainPage() {
   return (
     <main>
       <h1>Таблица товаров</h1>
@@ -16,5 +16,3 @@ function MainPage() {
     </main>
   );
 }
-
-export default MainPage;

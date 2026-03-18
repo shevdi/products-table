@@ -1,5 +1,4 @@
-import { Input } from '@/components/Input';
-import { Icon } from '@/components/Icon';
+import { Input, Icon } from '@/components';
 
 export interface ProductSearchProps {
   value?: string;

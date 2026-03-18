@@ -1,8 +1,6 @@
 import { useMemo, useCallback } from 'react';
 import type { ColumnDef, SortingState, OnChangeFn } from '@tanstack/react-table';
-import { BaseTable } from '@/components/BaseTable';
-import { Button } from '@/components/Button';
-import { Icon } from '@/components/Icon';
+import { BaseTable, Button, Icon } from '@/components';
 import { useSelectedProductsStore } from '../model/selectedProductsStore';
 import type { Product } from '@/shared/types/product';
 import styles from './ProductTable.module.css';
@@ -54,11 +52,7 @@ function ActionsCell({ row }: { row: { original: Product } }) {
   void row; // reserved for add/menu handlers
   return (
     <div className={styles.productTable__actions}>
-      <button
-        type="button"
-        className={styles.productTable__iconBtn}
-        aria-label="Добавить"
-      >
+      <button type="button" className={styles.productTable__iconBtn} aria-label="Добавить">
         <Icon name="plus-click" width={39} height={20} inheritColor={false} />
       </button>
       <Button
@@ -73,7 +67,12 @@ function ActionsCell({ row }: { row: { original: Product } }) {
   );
 }
 
-export function ProductTable({ products, sorting = [], onSortingChange, isLoading }: ProductTableProps) {
+export function ProductTable({
+  products,
+  sorting = [],
+  onSortingChange,
+  isLoading,
+}: ProductTableProps) {
   const { selectedIds, setSelectedIds } = useSelectedProductsStore();
 
   const rowSelection = useMemo(() => {

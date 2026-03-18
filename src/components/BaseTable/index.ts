@@ -1,2 +1,1 @@
-export { BaseTable } from './BaseTable';
-export type { BaseTableProps } from './BaseTable';
+export { type BaseTableProps, BaseTable } from './BaseTable';

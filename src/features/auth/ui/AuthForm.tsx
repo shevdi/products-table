@@ -5,10 +5,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { LoginResponse, login } from '@/api/auth';
 import { useAuthStore } from '../model/authStore';
-import { Input } from '@/components/Input';
-import { Checkbox } from '@/components/Checkbox';
-import { Button } from '@/components/Button';
-import { Icon } from '@/components/Icon';
+import { Input, Checkbox, Button, Icon } from '@/components';
 import styles from './AuthForm.module.css';
 
 const loginSchema = z.object({

@@ -1,9 +1,7 @@
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { toast } from '@/components/Toast';
-import { Input } from '@/components/Input';
-import { Button } from '@/components/Button';
+import { toast, Input, Button } from '@/components';
 import styles from './AddProductForm.module.css';
 
 const addProductSchema = z.object({

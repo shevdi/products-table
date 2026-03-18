@@ -4,13 +4,8 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useDebounce } from 'use-debounce';
 import type { SortingState, Updater } from '@tanstack/react-table';
 import { fetchProducts } from '@/api/products';
-import { AddProductForm, ProductTable } from '@/features/ProductTable';
-import { ProductSearch } from '@/features/ProductSearch';
-import { ProgressBar } from '@/components/ProgressBar';
-import { Pagination } from '@/components/Pagination';
-import { Logout } from '@/features/auth';
-import { Icon } from '@/components/Icon';
-import { Modal } from '@/components/Modal';
+import { AddProductForm, ProductTable, ProductSearch, Logout } from '@/features';
+import { ProgressBar, Pagination, Icon, Modal } from '@/components';
 import styles from './ProductPage.module.css';
 
 const PAGE_SIZE = 5;

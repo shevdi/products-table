@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { AuthForm } from '@/features/auth';
-import { Icon } from '@/components/Icon';
+import { AuthForm } from '@/features';
+import { Icon } from '@/components';
 import styles from './LoginPage.module.css';
 
 export function LoginPage() {

@@ -1,4 +1,2 @@
-export { ProductTable } from './ui/ProductTable';
-export type { ProductTableProps } from './ui/ProductTable';
-export { AddProductForm } from './ui/AddProductForm';
-export type { AddProductFormProps } from './ui/AddProductForm';
+export { type ProductTableProps, ProductTable } from './ui/ProductTable';
+export { type AddProductFormProps, AddProductForm } from './ui/AddProductForm';

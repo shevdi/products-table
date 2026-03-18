@@ -76,7 +76,7 @@ src/
 
 **Важно:** в настройках репозитория (**Settings → Pages**) выберите **Source: GitHub Actions**.
 
-- **Приложение:** https://shevdi.github.io/products-table/
+- **Приложение:** https://shevdi.github.io/products-table/ (логин: emilys, пароль: emilyspass)
 - **Storybook:** https://shevdi.github.io/products-table/storybook/
 
 ## API

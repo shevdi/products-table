@@ -2,14 +2,10 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute';
 import { LoadingFallback } from './LoadingFallback';
-import MainPage from '@/pages/MainPage/MainPage';
+import { MainPage } from '@/pages';
 
-const LoginPage = lazy(() =>
-  import('@/pages/LoginPage/LoginPage').then((m) => ({ default: m.LoginPage }))
-);
-const ProductPage = lazy(() =>
-  import('@/pages/ProductPage/ProductPage').then((m) => ({ default: m.ProductPage }))
-);
+const LoginPage = lazy(() => import('@/pages').then((m) => ({ default: m.LoginPage })));
+const ProductPage = lazy(() => import('@/pages').then((m) => ({ default: m.ProductPage })));
 
 export function AppRouter() {
   return (

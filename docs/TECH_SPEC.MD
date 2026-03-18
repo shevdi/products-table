@@ -6,10 +6,6 @@
 
 ---
 
-## Макет
-
-https://www.figma.com/design/NO3iFfoTbjHhDCt9whuQLo/Aiti-Guru-%D1%82%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5-%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5
-
 ## API
 
 В качестве источника данных использовать публичное API:
@@ -38,35 +34,39 @@ https://www.figma.com/design/NO3iFfoTbjHhDCt9whuQLo/Aiti-Guru-%D1%82%D0%B5%D1%81
 - Валидация полей (обязательность заполнения)
 - Обработка ошибок: при ошибке API выводить уведомление или текст ошибки под полями
 
-### Логика запоминания данных для входа:
+### Логика запоминания данных для входа
 
 - Авторизация по username
-- Если чекбокс установлен — сохранять токен авторизации так, чтобы сессия жила после закрытия браузера
-- Если не установлен — сессия сбрасывается при закрытии вкладки
+- Если чекбокс установлен — сохранять токен в localStorage (сессия живёт после закрытия браузера)
+- Если не установлен — сессия в sessionStorage, сбрасывается при закрытии вкладки
 - Если пользователь не авторизован, редиректить его на страницу логина
 - Защищённые роуты: `/` и `/products` требуют авторизации; `/login` доступна без авторизации
 
+### Главная страница (`/`)
+
+- Landing-страница с навигацией: ссылки «Войти» и «Таблица товаров»
+
 ### Вывод списка товаров
 
-- Соответствие столбцам из макета Figma
+- Соответствие столбцам: Наименование (с thumbnail), Вендор, Артикул, Оценка, Цена, действия
 - Прогресс-бар при подгрузке
 - Подгрузка данных из API
 
 ### Сортировка
 
-- Возможность сортировки по столбцам (например, по цене или рейтингу)
-- Состояние сортировки должно сохраняться в URL (query params)
+- Сортировка по столбцам (name, brand, sku, rating, price)
+- Состояние сортировки сохраняется в URL (query params: `sortBy`, `order`)
 
 ### Выбор товара
 
-- При нажатии чекбокса просто добавлять (убирать) товар в store.
+- Чекбоксы в строках таблицы добавляют (убирают) товар в store выбранных
 
 ### Добавление товара
 
-- По нажатию кнопки «Добавить» открывается форма с полями: Наименование, цена, вендор, артикул
-- При успешном добавлении показывать базовое Toast-уведомление
-- Логику сохранения через API реализовывать не нужно. Только локальный state — новый товар в таблице, без вызова API.
-- Структура нового товара при локальном добавлении: `id` — временный (например, `temp-${Date.now()}`), `rating` — 0, `category` — пустая строка, `thumbnail` — placeholder
+- По нажатию кнопки «Добавить» открывается модал с формой
+- Поля: Наименование, цена, вендор, артикул
+- При успешной отправке — Toast-уведомление «Товар добавлен», закрытие модала
+- Локальное добавление товара в таблицу (без API) в текущей реализации не реализовано
 
 ### Логика интерфейса
 
@@ -74,34 +74,42 @@ https://www.figma.com/design/NO3iFfoTbjHhDCt9whuQLo/Aiti-Guru-%D1%82%D0%B5%D1%81
 
 ### Поиск товаров
 
-- Использовать API
-- Использовать пагинацию. 5 товаров на страницу
-- Поиск по вводу с debounce 500ms
+- Поиск через API (DummyJSON search)
+- Пагинация: 5 товаров на страницу
+- Debounce 500ms (библиотека `use-debounce`)
 - При пустом запросе показывать весь список
+- Параметры поиска и страницы в URL (query params: `q`, `page`)
+
+### Дополнительные элементы
+
+- Кнопка Refresh — обновление данных (invalidate cache)
+- Кнопка «Добавить» — открывает модал добавления
+- Кнопка «...» (меню) — сверстана, без логики
 
 ### Не требуется реализация
 
-- Элементы, которые не указаны в ТЗ — только сверстать: ссылка «Создать», кнопка «+», «...», кнопка Refresh
+- Ссылка «Создать» — только сверстать
 
 ## Технические требования
 
 - Component-Driven Development. Максимально готовое решение собрать в Storybook, затем проект.
 - Feature-Driven Architecture.
-- CSS modules. БЭМ. Без лишних библиотек. Предпочтительнее CSS variables. Использовать кастомные стили.
-- Использовать radix-ui primitives.
-- Иконки в одном компоненте
-- stories хранить рядом с компонентами
-- Compound components
-- Tanstack Table для таблицы.
+- CSS modules. БЭМ. CSS variables. Кастомные стили.
+- Radix UI primitives: Dialog, Progress, Toast, Slot.
+- Иконки в одном компоненте `Icon` (SVG через vite-plugin-svgr).
+- Stories хранить рядом с компонентами.
+- Compound components (Input, Checkbox).
+- экспортировать компоненты через корневой index.ts
+- Tanstack Table для таблицы (компонент BaseTable).
 - Tanstack Query для запросов.
-- zustand. Использовать immer middleware, slices for auth and table page
+- Zustand: auth store — immer + persist; selectedProducts — devtools.
 
 ## Используемые технологии
 
 - Vite
 - React
 - React Router
-- TS
+- TypeScript
 - Storybook
 - Tanstack Query
 - Tanstack Table
@@ -109,61 +117,79 @@ https://www.figma.com/design/NO3iFfoTbjHhDCt9whuQLo/Aiti-Guru-%D1%82%D0%B5%D1%81
 - React Hook Form
 - Zod
 - clsx
-- eslint
-- prettier
+- use-debounce
+- vite-plugin-svgr
+- ESLint
+- Prettier
 
 ## Структура
 
 ```
 src/
- ├── app/
- │    ├── App.tsx
- │    ├── providers.tsx
- │    └── router.tsx
- ├── api/
- │    ├── client.ts
- │    ├── auth.ts
- │    └── products.ts
- ├── stores/
- │    ├── authStore.ts
- │    └── selectedProductsStore.ts
- ├── pages/
- │    ├── LoginPage/
- │    │    └── LoginPage.tsx
- │    └── ProductPage/
- │         └── ProductPage.tsx
- ├── features/
- │    ├── AuthForm/
- │    │    ├── AuthForm.tsx
- │    │    └── AuthForm.module.css
- │    ├── ProductSearch/
- │    │    ├── ProductSearch.tsx
- │    │    └── ProductSearch.module.css
- │    └── ProductTable/
- │         ├── ProductTable.tsx
- │         ├── AddProductForm.tsx
- │         └── ProductTable.module.css
- ├── components/
- │    ├── Table/
- │    ├── Input/
- │    ├── Checkbox/
- │    ├── Button/
- │    ├── Modal/
- │    ├── Toast/
- │    ├── Pagination/
- │    └── ProgressBar/
- └── shared/
-      ├── utils/
-      ├── styles/
-      └── types/
+├── app/
+│   ├── providers.tsx
+│   ├── router.tsx
+│   ├── ProtectedRoute.tsx
+│   └── LoadingFallback.tsx
+├── api/
+│   ├── client.ts
+│   ├── auth.ts
+│   └── products.ts
+├── pages/
+│   ├── MainPage/
+│   │   ├── MainPage.tsx
+│   │   └── MainPage.module.css
+│   ├── LoginPage/
+│   │   ├── LoginPage.tsx
+│   │   ├── LoginPage.module.css
+│   │   └── LoginPage.stories.tsx
+│   └── ProductPage/
+│       ├── ProductPage.tsx
+│       └── ProductPage.module.css
+├── features/
+│   ├── auth/
+│   │   ├── model/
+│   │   │   └── authStore.ts
+│   │   ├── ui/
+│   │   │   ├── AuthForm.tsx
+│   │   │   ├── AuthForm.module.css
+│   │   │   ├── Logout.tsx
+│   │   │   └── Logout.module.css
+│   │   └── index.ts
+│   ├── ProductSearch/
+│   │   ├── ui/
+│   │   │   └── ProductSearch.tsx
+│   │   └── index.ts
+│   └── ProductTable/
+│       ├── model/
+│       │   └── selectedProductsStore.ts
+│       ├── ui/
+│       │   ├── ProductTable.tsx
+│       │   ├── ProductTable.module.css
+│       │   ├── AddProductForm.tsx
+│       │   ├── AddProductForm.module.css
+│       │   └── *.stories.tsx
+│       └── index.ts
+├── components/
+│   ├── BaseTable/
+│   ├── Input/          (compound: Root, Box, Slot, Field, Clear, PasswordToggle, Label, Error)
+│   ├── Checkbox/       (compound: Root, Box, Label)
+│   ├── Button/
+│   ├── Modal/
+│   ├── Toast/
+│   ├── Pagination/
+│   ├── ProgressBar/
+│   └── Icon/
+└── shared/
+    └── types/
+        └── product.ts
 ```
 
 **Назначение слоёв:**
 
-- `app/` — инициализация приложения, провайдеры (Query, Router), роутинг
+- `app/` — инициализация, провайдеры (Query, Router), роутинг, ProtectedRoute, LoadingFallback
 - `api/` — HTTP-клиент и методы запросов к API
-- `stores/` — Zustand stores (сессия, выбранные товары)
-- `pages/` — страницы-контейнеры, композиция фич
-- `features/` — фичи с логикой (AuthForm, ProductSearch, ProductTable + AddProductForm)
+- `pages/` — страницы-контейнеры (MainPage, LoginPage, ProductPage)
+- `features/` — фичи с логикой и моделями: auth (AuthForm, Logout, authStore), ProductSearch, ProductTable (ProductTable, AddProductForm, selectedProductsStore)
 - `components/` — переиспользуемые UI-компоненты (Storybook)
-- `shared/` — общие типы, стили, утилиты
+- `shared/` — общие типы

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ToastProvider } from '@/components/Toast';
+import { ToastProvider } from '@/components';
 import { AddProductForm } from './AddProductForm';
 
 const meta: Meta<typeof AddProductForm> = {
