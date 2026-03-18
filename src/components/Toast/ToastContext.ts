@@ -15,7 +15,7 @@ export function toast(opts: ToastOptions) {
   toastHandler?.(opts);
 }
 
-const ToastContext = createContext<((opts: ToastOptions) => void) | null>(null);
+export const ToastContext = createContext<((opts: ToastOptions) => void) | null>(null);
 
 export function useToast() {
   const ctx = useContext(ToastContext);
@@ -24,5 +24,3 @@ export function useToast() {
   }
   return ctx;
 }
-
-export { ToastContext };

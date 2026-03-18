@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Базовый компонент таблицы на TanStack Table: семантичная разметка, простой текст, кастомные ячейки, truncation, sort indicators, empty state.
+Базовый компонент таблицы на TanStack Table: семантичная разметка, простой текст, кастомные ячейки, truncation, sort indicators, empty state, row selection.
 
 ## Requirements
 
@@ -73,6 +73,22 @@ The project SHALL render sort indicators (↑↓) next to column headers when so
 #### Scenario: Header click toggles sort
 - **WHEN** user clicks a sortable column header
 - **THEN** the sort direction toggles (asc ↔ desc)
+
+### Requirement: BaseTable supports optional row selection
+
+The project SHALL support row selection when `enableRowSelection` is true, using `rowSelection` and `onRowSelectionChange` props.
+
+#### Scenario: Selection column when enabled
+- **WHEN** BaseTable receives `enableRowSelection={true}` and columns
+- **THEN** a select column is prepended (via useTableColumnsWithSelection) with header checkbox and row checkboxes
+
+#### Scenario: rowSelection and onRowSelectionChange control state
+- **WHEN** BaseTable receives `rowSelection` and `onRowSelectionChange`
+- **THEN** TanStack Table uses them for controlled row selection state
+
+#### Scenario: getRowId required for selection
+- **WHEN** row selection is enabled
+- **THEN** `getRowId` prop is used to map rows to stable IDs for selection
 
 ### Requirement: BaseTable shows default empty state when no rows
 

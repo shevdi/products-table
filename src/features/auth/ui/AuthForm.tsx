@@ -1,10 +1,7 @@
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
-import { LoginResponse, login } from '@/api/auth';
-import { useAuthStore } from '../model/authStore';
+import { useLoginMutation, type LoginFormValues } from '../hooks/useLoginMutation';
 import { Input, Checkbox, Button, Icon } from '@/components';
 import styles from './AuthForm.module.css';
 
@@ -14,12 +11,7 @@ const loginSchema = z.object({
   rememberMe: z.boolean(),
 });
 
-type LoginFormValues = z.infer<typeof loginSchema>;
-
 export function AuthForm() {
-  const navigate = useNavigate();
-  const setAuth = useAuthStore((s) => s.setAuth);
-
   const {
     control,
     handleSubmit,
@@ -33,19 +25,7 @@ export function AuthForm() {
     },
   });
 
-  const mutation = useMutation({
-    mutationFn: async (values: LoginFormValues) => {
-      const result = await login(values.username, values.password);
-      if (!result.ok) {
-        throw new Error(result.error);
-      }
-      return { ...result.data, rememberMe: values.rememberMe };
-    },
-    onSuccess: (data: LoginResponse & { rememberMe: boolean }) => {
-      setAuth(data.accessToken, data, data.rememberMe);
-      navigate('/products');
-    },
-  });
+  const mutation = useLoginMutation();
 
   const apiError = mutation.error?.message;
 

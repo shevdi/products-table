@@ -88,4 +88,5 @@ src/
 
 - [TECH_SPEC.MD](./docs/TECH_SPEC.MD) — техническое задание
 - [DEV_PLAN.MD](./docs/DEV_PLAN.MD) — план разработки
+- [DESIGN.MD](./docs/DESIGN.MD) — план разработки
 - [WORKFLOW.MD](./docs/WORKFLOW.MD) — AI spec driven development

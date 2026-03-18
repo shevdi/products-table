@@ -1,9 +1,5 @@
-import {
-  useId,
-  useState,
-  useCallback,
-  type ReactNode,
-} from 'react';
+import { useId, type ReactNode } from 'react';
+import { useControlledState } from '@/shared/hooks/useControlledState';
 import { CheckboxContext } from './CheckboxContext';
 import type { CheckboxContextValue } from './CheckboxContext';
 
@@ -23,19 +19,10 @@ export function CheckboxContextProvider({
   error,
 }: CheckboxContextProviderProps) {
   const id = useId();
-  const [internalChecked, setInternalChecked] = useState(false);
-
-  const isControlled = controlledChecked !== undefined;
-  const checked = isControlled ? controlledChecked : internalChecked;
-
-  const onChange = useCallback(
-    (newChecked: boolean) => {
-      if (!isControlled) {
-        setInternalChecked(newChecked);
-      }
-      controlledOnChange?.(newChecked);
-    },
-    [isControlled, controlledOnChange]
+  const [checked, onChange] = useControlledState(
+    controlledChecked,
+    controlledOnChange,
+    false
   );
 
   const ctxValue: CheckboxContextValue = {

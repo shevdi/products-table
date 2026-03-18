@@ -1,4 +1,5 @@
 import { useId, useState, useCallback, type ReactNode } from 'react';
+import { useControlledState } from '@/shared/hooks/useControlledState';
 import { InputContext, type InputContextValue, type InputSize } from './InputContext';
 
 interface InputContextProviderProps {
@@ -21,21 +22,12 @@ export function InputContextProvider({
   type: fieldTypeProp = 'text',
 }: InputContextProviderProps) {
   const id = useId();
-  const [internalValue, setInternalValue] = useState('');
-  const [fieldType, setFieldTypeState] = useState<'text' | 'password'>(fieldTypeProp);
-
-  const isControlled = controlledValue !== undefined;
-  const value = isControlled ? controlledValue : internalValue;
-
-  const setFieldValue = useCallback(
-    (newValue: string) => {
-      if (!isControlled) {
-        setInternalValue(newValue);
-      }
-      controlledOnChange?.(newValue);
-    },
-    [isControlled, controlledOnChange]
+  const [value, setFieldValue] = useControlledState(
+    controlledValue,
+    controlledOnChange,
+    ''
   );
+  const [fieldType, setFieldTypeState] = useState<'text' | 'password'>(fieldTypeProp);
 
   const onChange = useCallback(
     (newValue: string) => {

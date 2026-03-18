@@ -1,16 +1,16 @@
-import { useMemo, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import {
   useReactTable,
   getCoreRowModel,
   getSortedRowModel,
-  flexRender,
   type ColumnDef,
   type SortingState,
   type RowSelectionState,
   type OnChangeFn,
 } from '@tanstack/react-table';
-import clsx from 'clsx';
-import { Checkbox } from '../Checkbox';
+import { useTableColumnsWithSelection } from './useTableColumnsWithSelection';
+import { BaseTableHeader } from './BaseTableHeader';
+import { BaseTableBody } from './BaseTableBody';
 import styles from './BaseTable.module.css';
 
 export interface BaseTableProps<TData> {
@@ -27,27 +27,6 @@ export interface BaseTableProps<TData> {
 
 const DEFAULT_EMPTY_MESSAGE = 'Нет данных';
 
-function createSelectionColumn<TData>(): ColumnDef<TData, unknown> {
-  return {
-    id: 'select',
-    header: ({ table }) => (
-      <Checkbox.Root
-        checked={table.getIsAllRowsSelected()}
-        onChange={(checked) => table.toggleAllRowsSelected(checked)}
-      >
-        <Checkbox.Box aria-label="Выбрать все" />
-      </Checkbox.Root>
-    ),
-    cell: ({ row }) => (
-      <Checkbox.Root checked={row.getIsSelected()} onChange={() => row.toggleSelected()}>
-        <Checkbox.Box aria-label={`Выбрать строку ${row.id}`} />
-      </Checkbox.Root>
-    ),
-    enableSorting: false,
-    meta: { truncate: false },
-  };
-}
-
 export function BaseTable<TData>({
   data,
   columns,
@@ -62,12 +41,7 @@ export function BaseTable<TData>({
   // TanStack Table's useReactTable uses interior mutability incompatible with React Compiler memoization.
   // See: https://react.dev/reference/eslint-plugin-react-hooks/lints/incompatible-library
   'use no memo';
-  const tableColumns = useMemo(() => {
-    if (enableRowSelection) {
-      return [createSelectionColumn<TData>(), ...columns];
-    }
-    return columns;
-  }, [enableRowSelection, columns]);
+  const tableColumns = useTableColumnsWithSelection(columns, enableRowSelection);
 
   // eslint-disable-next-line react-hooks/incompatible-library -- useReactTable uses interior mutability; "use no memo" above opts out.
   const table = useReactTable({
@@ -88,86 +62,11 @@ export function BaseTable<TData>({
     },
   });
 
-  const leafColumns = table.getAllLeafColumns();
-  const isEmpty = data.length === 0;
-
   return (
     <div className={styles.baseTable}>
       <table className={styles.baseTable__table}>
-        <thead className={styles.baseTable__thead}>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id} className={styles.baseTable__tr}>
-              {headerGroup.headers.map((header) => (
-                <th
-                  key={header.id}
-                  className={clsx(
-                    styles.baseTable__th,
-                    header.column.getCanSort() && styles.baseTable__th_sortable
-                  )}
-                >
-                  <div
-                    className={styles.baseTable__headerContent}
-                    onClick={header.column.getToggleSortingHandler()}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        header.column.getToggleSortingHandler()?.(e as unknown as React.MouseEvent);
-                      }
-                    }}
-                    role={header.column.getCanSort() ? 'button' : undefined}
-                    tabIndex={header.column.getCanSort() ? 0 : undefined}
-                  >
-                    {flexRender(header.column.columnDef.header, header.getContext())}
-                    {header.column.getCanSort() && (
-                      <span className={styles.baseTable__sortIndicator} aria-hidden>
-                        {header.column.getIsSorted() === 'asc'
-                          ? ' ↑'
-                          : header.column.getIsSorted() === 'desc'
-                            ? ' ↓'
-                            : ''}
-                      </span>
-                    )}
-                  </div>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody className={styles.baseTable__tbody}>
-          {isEmpty ? (
-            <tr className={styles.baseTable__tr}>
-              <td colSpan={leafColumns.length} className={styles.baseTable__emptyCell}>
-                {emptyMessage}
-              </td>
-            </tr>
-          ) : (
-            table.getRowModel().rows.map((row) => (
-              <tr
-                key={row.id}
-                className={clsx(
-                  styles.baseTable__tr,
-                  row.getIsSelected() && styles.baseTable__tr_selected
-                )}
-              >
-                {row.getVisibleCells().map((cell) => {
-                  const columnDef = cell.column.columnDef;
-                  const meta = (columnDef.meta ?? {}) as { truncate?: boolean };
-                  const truncate = meta.truncate !== false;
-                  return (
-                    <td
-                      key={cell.id}
-                      className={clsx(
-                        styles.baseTable__td,
-                        truncate && styles.baseTable__td_truncate
-                      )}
-                    >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))
-          )}
-        </tbody>
+        <BaseTableHeader table={table} />
+        <BaseTableBody table={table} emptyMessage={emptyMessage} />
       </table>
     </div>
   );

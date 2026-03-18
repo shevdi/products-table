@@ -10,7 +10,9 @@ export const useSelectedProductsStore = create<SelectedProductsState>()(
   devtools(
     (set) => ({
       selectedIds: [],
-      setSelectedIds: (ids) => set({ selectedIds: ids }),
+      setSelectedIds(ids) {
+        set({ selectedIds: ids }, false, 'setSelectedIds');
+      },
     }),
     { name: 'SelectedProductsStore', enabled: import.meta.env.DEV }
   )
