@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute';
 import { LoadingFallback } from './LoadingFallback';
-import App from './App';
+import MainPage from '@/pages/MainPage/MainPage';
 
 const LoginPage = lazy(() =>
   import('@/pages/LoginPage/LoginPage').then((m) => ({ default: m.LoginPage }))
@@ -19,7 +19,7 @@ export function AppRouter() {
           path="/"
           element={
             <ProtectedRoute>
-              <App />
+              <MainPage />
             </ProtectedRoute>
           }
         />

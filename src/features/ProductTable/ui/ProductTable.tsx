@@ -11,6 +11,7 @@ export interface ProductTableProps {
   products: Product[];
   sorting?: SortingState;
   onSortingChange?: OnChangeFn<SortingState>;
+  isLoading?: boolean;
 }
 
 function ProductNameCell({ row }: { row: { original: Product } }) {
@@ -72,7 +73,7 @@ function ActionsCell({ row }: { row: { original: Product } }) {
   );
 }
 
-export function ProductTable({ products, sorting = [], onSortingChange }: ProductTableProps) {
+export function ProductTable({ products, sorting = [], onSortingChange, isLoading }: ProductTableProps) {
   const { selectedIds, setSelectedIds } = useSelectedProductsStore();
 
   const rowSelection = useMemo(() => {
@@ -150,7 +151,7 @@ export function ProductTable({ products, sorting = [], onSortingChange }: Produc
       onRowSelectionChange={handleRowSelectionChange}
       enableRowSelection
       getRowId={(row) => String(row.id)}
-      emptyMessage="Нет товаров"
+      emptyMessage={isLoading ? 'Загружается' : 'Нет товаров'}
     />
   );
 }

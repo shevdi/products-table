@@ -156,7 +156,12 @@ export function ProductPage() {
           </div>
         </div>
         {isLoading && <ProgressBar />}
-        <ProductTable products={products} sorting={sorting} onSortingChange={handleSortingChange} />
+        <ProductTable
+          products={products}
+          sorting={sorting}
+          onSortingChange={handleSortingChange}
+          isLoading={isLoading}
+        />
         <Pagination
           className={styles.pagination}
           page={page}
@@ -169,6 +174,12 @@ export function ProductPage() {
         <h2 className={styles.modalTitle}>Добавить товар</h2>
         <AddProductForm onSuccess={() => setAddModalOpen(false)} />
       </Modal>
+      {isLoading && (
+        <div className={styles.progressBarWrapper}>
+          <ProgressBar />
+        </div>
+      )}
+      <Logout />
     </div>
   );
 }
