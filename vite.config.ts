@@ -14,6 +14,22 @@ const dirname =
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   plugins: [react(), svgr()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'query-vendor': ['@tanstack/react-query', '@tanstack/react-table'],
+          'ui-vendor': [
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-progress',
+            '@radix-ui/react-toast',
+            '@radix-ui/react-slot',
+          ],
+        },
+      },
+    },
+  },
   server: {
     host: '127.0.0.1',
     port: 5174,
