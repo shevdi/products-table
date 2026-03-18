@@ -9,7 +9,7 @@ const queryClient = new QueryClient();
 export function Providers() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter basename="/products-table">
         <ToastProvider>
           <AppRouter />
         </ToastProvider>
