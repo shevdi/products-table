@@ -39,10 +39,7 @@ function createSelectionColumn<TData>(): ColumnDef<TData, unknown> {
       </Checkbox.Root>
     ),
     cell: ({ row }) => (
-      <Checkbox.Root
-        checked={row.getIsSelected()}
-        onChange={() => row.toggleSelected()}
-      >
+      <Checkbox.Root checked={row.getIsSelected()} onChange={() => row.toggleSelected()}>
         <Checkbox.Box aria-label={`Выбрать строку ${row.id}`} />
       </Checkbox.Root>
     ),
@@ -62,6 +59,9 @@ export function BaseTable<TData>({
   getRowId,
   enableRowSelection = false,
 }: BaseTableProps<TData>) {
+  // TanStack Table's useReactTable uses interior mutability incompatible with React Compiler memoization.
+  // See: https://react.dev/reference/eslint-plugin-react-hooks/lints/incompatible-library
+  'use no memo';
   const tableColumns = useMemo(() => {
     if (enableRowSelection) {
       return [createSelectionColumn<TData>(), ...columns];
@@ -69,6 +69,7 @@ export function BaseTable<TData>({
     return columns;
   }, [enableRowSelection, columns]);
 
+  // eslint-disable-next-line react-hooks/incompatible-library -- useReactTable uses interior mutability; "use no memo" above opts out.
   const table = useReactTable({
     data,
     columns: tableColumns,
@@ -102,7 +103,8 @@ export function BaseTable<TData>({
                   className={clsx(
                     styles.baseTable__th,
                     header.column.getCanSort() && styles.baseTable__th_sortable
-                  )}>
+                  )}
+                >
                   <div
                     className={styles.baseTable__headerContent}
                     onClick={header.column.getToggleSortingHandler()}
@@ -112,7 +114,8 @@ export function BaseTable<TData>({
                       }
                     }}
                     role={header.column.getCanSort() ? 'button' : undefined}
-                    tabIndex={header.column.getCanSort() ? 0 : undefined}>
+                    tabIndex={header.column.getCanSort() ? 0 : undefined}
+                  >
                     {flexRender(header.column.columnDef.header, header.getContext())}
                     {header.column.getCanSort() && (
                       <span className={styles.baseTable__sortIndicator} aria-hidden>
@@ -143,7 +146,8 @@ export function BaseTable<TData>({
                 className={clsx(
                   styles.baseTable__tr,
                   row.getIsSelected() && styles.baseTable__tr_selected
-                )}>
+                )}
+              >
                 {row.getVisibleCells().map((cell) => {
                   const columnDef = cell.column.columnDef;
                   const meta = (columnDef.meta ?? {}) as { truncate?: boolean };
@@ -154,7 +158,8 @@ export function BaseTable<TData>({
                       className={clsx(
                         styles.baseTable__td,
                         truncate && styles.baseTable__td_truncate
-                      )}>
+                      )}
+                    >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   );

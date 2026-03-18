@@ -11,11 +11,7 @@ export function Label({ children, className, htmlFor, ...props }: LabelProps) {
   const { id } = useInputContext();
 
   return (
-    <label
-      htmlFor={htmlFor ?? id}
-      className={clsx(styles.input__label, className)}
-      {...props}
-    >
+    <label htmlFor={htmlFor ?? id} className={clsx(styles.input__label, className)} {...props}>
       {children}
     </label>
   );

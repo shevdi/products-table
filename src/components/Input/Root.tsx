@@ -1,6 +1,7 @@
 import type { ReactNode, HTMLAttributes } from 'react';
 import clsx from 'clsx';
-import { InputContextProvider, type InputSize } from './InputContext';
+import { InputContextProvider } from './InputContextProvider';
+import type { InputSize } from './InputContext';
 import styles from './Input.module.css';
 
 export interface RootProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'> {

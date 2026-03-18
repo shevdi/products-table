@@ -1,31 +1,11 @@
 import type { ReactNode } from 'react';
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as ToastPrimitive from '@radix-ui/react-toast';
+import { ToastContext, setToastHandler, type ToastOptions } from './ToastContext';
 import styles from './Toast.module.css';
-
-export interface ToastOptions {
-  title?: string;
-  description?: string;
-}
 
 interface ToastEntry extends ToastOptions {
   id: string;
-}
-
-let toastHandler: ((opts: ToastOptions) => void) | null = null;
-
-export function toast(opts: ToastOptions) {
-  toastHandler?.(opts);
-}
-
-const ToastContext = createContext<((opts: ToastOptions) => void) | null>(null);
-
-export function useToast() {
-  const ctx = useContext(ToastContext);
-  if (!ctx) {
-    throw new Error('useToast must be used within ToastProvider');
-  }
-  return ctx;
 }
 
 export interface ToastProviderProps {
@@ -45,9 +25,9 @@ export function ToastProvider({ children }: ToastProviderProps) {
   }, []);
 
   useEffect(() => {
-    toastHandler = addToast;
+    setToastHandler(addToast);
     return () => {
-      toastHandler = null;
+      setToastHandler(null);
     };
   }, [addToast]);
 
@@ -56,18 +36,20 @@ export function ToastProvider({ children }: ToastProviderProps) {
       <ToastPrimitive.Provider>
         {children}
         <ToastPrimitive.Viewport className={styles.toast__viewport} />
-        {toasts.map((t) => (
+        {toasts.map((toast) => (
           <ToastPrimitive.Root
-            key={t.id}
+            key={toast.id}
             open
-            onOpenChange={(open) => !open && removeToast(t.id)}
+            onOpenChange={(open) => !open && removeToast(toast.id)}
             className={styles.toast__root}
           >
-            {t.title && (
-              <ToastPrimitive.Title className={styles.toast__title}>{t.title}</ToastPrimitive.Title>
+            {toast.title && (
+              <ToastPrimitive.Title className={styles.toast__title}>
+                {toast.title}
+              </ToastPrimitive.Title>
             )}
             <ToastPrimitive.Description className={styles.toast__description}>
-              {t.description ?? (t.title ? '' : 'Уведомление')}
+              {toast.description ?? (toast.title ? '' : 'Уведомление')}
             </ToastPrimitive.Description>
             <ToastPrimitive.Close className={styles.toast__close} aria-label="Закрыть">
               ×
