@@ -67,7 +67,7 @@ export function ToastProvider({ children }: ToastProviderProps) {
               <ToastPrimitive.Title className={styles.toast__title}>{t.title}</ToastPrimitive.Title>
             )}
             <ToastPrimitive.Description className={styles.toast__description}>
-              {t.description ?? (t.title ? '' : 'Notification')}
+              {t.description ?? (t.title ? '' : 'Уведомление')}
             </ToastPrimitive.Description>
             <ToastPrimitive.Close className={styles.toast__close} aria-label="Закрыть">
               ×

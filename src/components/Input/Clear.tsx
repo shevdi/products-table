@@ -15,7 +15,7 @@ export function Clear() {
       className={styles.input__clear}
       onClick={() => setFieldValue('')}
       disabled={disabled}
-      aria-label="Clear"
+      aria-label="Очистить"
     >
       <Icon name="close" size={16} />
     </button>

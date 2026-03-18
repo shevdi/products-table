@@ -20,7 +20,7 @@ LoginPage SHALL render when user navigates to `/login`.
 
 ### Requirement: Login form structure
 
-LoginPage SHALL display a centered white card containing: logo, title "Авторизация", subtitle "Пожалуйста, авторизируйтесь", login input, password input, "Запомнить данные" checkbox, "Войти" button, "или" separator, and "Нет аккаунта? Создать" link.
+LoginPage SHALL display a centered white card containing: logo, title "Авторизация", subtitle "Пожалуйста, авторизуйтесь", login input, password input, "Запомнить данные" checkbox, "Войти" button, "или" separator, and "Нет аккаунта? Создать" link.
 
 #### Scenario: Card layout
 - **WHEN** user views LoginPage
@@ -28,7 +28,7 @@ LoginPage SHALL display a centered white card containing: logo, title "Авто�
 
 #### Scenario: Header content
 - **WHEN** user views LoginPage
-- **THEN** logo icon, title "Авторизация", and subtitle "Пожалуйста, авторизируйтесь" are visible
+- **THEN** logo icon, title "Авторизация", and subtitle "Пожалуйста, авторизуйтесь" are visible
 
 #### Scenario: Login input
 - **WHEN** user views LoginPage

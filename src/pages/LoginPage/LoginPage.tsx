@@ -14,7 +14,7 @@ export function LoginPage() {
 
           <header className={styles.header}>
             <h1 className={styles.title}>Авторизация</h1>
-            <p className={styles.subtitle}>Пожалуйста, авторизируйтесь</p>
+            <p className={styles.subtitle}>Пожалуйста, авторизуйтесь</p>
           </header>
 
           <AuthForm />

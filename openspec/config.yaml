@@ -10,5 +10,5 @@ context: >
   - Compound components
   - Tanstack Table для таблицы.
   - Tanstack Query для запросов.
-  - zustand. Испоьзовать immer middleware. slices for auth and table page
+  - zustand. Использовать immer middleware, slices for auth and table page
   Используемые технологии: Vite, React, React Router, TS, Storybook, Tanstack Query, Tanstack Table, Zustand, React Hook Form, Zod, eslint, prettier

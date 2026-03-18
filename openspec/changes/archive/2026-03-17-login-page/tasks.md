@@ -7,7 +7,7 @@
 ## 2. Login form content
 
 - [x] 2.1 Add logo (Icon name="logo") in circular container with gradient border
-- [x] 2.2 Add header: title "Авторизация", subtitle "Пожалуйста, авторизируйтесь" with correct typography
+- [x] 2.2 Add header: title "Авторизация", subtitle "Пожалуйста, авторизуйтесь" with correct typography
 - [x] 2.3 Add login field: Input.Root (size md) with Input.Label "Логин", Input.Slot (Icon user), Input.Field, Input.Clear
 - [x] 2.4 Add password field: Input.Root (type password, size md) with Input.Label "Пароль", Input.Slot (Icon lock), Input.Field, Input.PasswordToggle
 - [x] 2.5 Add Checkbox for "Запомнить данные"
