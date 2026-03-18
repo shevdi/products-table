@@ -70,6 +70,15 @@ src/
 └── shared/       # Типы, стили, утилиты
 ```
 
+## Деплой (GitHub Pages)
+
+При `push` в ветку `main` GitHub Actions собирает проект и публикует его на GitHub Pages.
+
+**Важно:** в настройках репозитория (**Settings → Pages**) выберите **Source: GitHub Actions**.
+
+- **Приложение:** `https://shevdi.github.io/products-table/`
+- **Storybook:** `https://shevdi.github.io/products-table/storybook/`
+
 ## API
 
 - **Продукты:** [DummyJSON Products](https://dummyjson.com/docs/products)

@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
+import { mergeConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
 const config: StorybookConfig = {
@@ -11,10 +12,14 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
   ],
   framework: '@storybook/react-vite',
-  async viteFinal(config) {
+  async viteFinal(config, { configType }) {
     config.plugins = config.plugins ?? [];
     config.plugins.push(svgr());
-    return config;
+    const overrides =
+      configType === 'PRODUCTION'
+        ? { base: '/products-table/storybook/' }
+        : {};
+    return mergeConfig(config, overrides);
   },
 };
 export default config;
