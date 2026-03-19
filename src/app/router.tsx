@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ProtectedRoute } from './ProtectedRoute';
 import { LoadingFallback } from './LoadingFallback';
+import { ErrorBoundary } from './ErrorBoundary';
 import { MainPage } from '@/pages';
 
 const LoginPage = lazy(() => import('@/pages').then((m) => ({ default: m.LoginPage })));
@@ -9,8 +10,9 @@ const ProductPage = lazy(() => import('@/pages').then((m) => ({ default: m.Produ
 
 export function AppRouter() {
   return (
-    <Suspense fallback={<LoadingFallback />}>
-      <Routes>
+    <ErrorBoundary>
+      <Suspense fallback={<LoadingFallback />}>
+        <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route
@@ -23,5 +25,6 @@ export function AppRouter() {
         />
       </Routes>
     </Suspense>
+    </ErrorBoundary>
   );
 }

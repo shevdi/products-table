@@ -15,7 +15,19 @@ export async function apiFetch<T>(
     },
   });
   if (!res.ok) {
-    throw new Error(`API error: ${res.status} ${res.statusText}`);
+    let message = `${res.status} ${res.statusText}`;
+    const contentType = res.headers.get('content-type');
+    if (contentType?.includes('application/json')) {
+      try {
+        const body = (await res.json()) as { message?: string };
+        if (body?.message) {
+          message = body.message;
+        }
+      } catch {
+        // fallback to statusText if JSON parse fails
+      }
+    }
+    throw new Error(`API error: ${message}`);
   }
   return res.json() as Promise<T>;
 }

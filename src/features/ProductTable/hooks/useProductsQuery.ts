@@ -33,7 +33,7 @@ export function useProductsQuery(search: string, page: number, sorting: SortingS
 
   const queryClient = useQueryClient();
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError, error, refetch } = useQuery({
     queryKey,
     queryFn: () => fetchProducts(buildFetchParams(debouncedSearch, page, sorting)),
   });
@@ -54,7 +54,10 @@ export function useProductsQuery(search: string, page: number, sorting: SortingS
     products,
     totalItems,
     isLoading,
+    isError,
+    error,
     handleRefresh,
+    handleRetry: refetch,
     pageSize: PAGE_SIZE,
   };
 }

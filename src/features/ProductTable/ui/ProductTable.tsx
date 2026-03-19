@@ -24,8 +24,6 @@ export function ProductTable({
     setSelectedIds
   );
 
-  console.log('rowSelection', rowSelection);
-
   return (
     <BaseTable<Product>
       data={products}

@@ -9,11 +9,8 @@ export function ProductPage() {
   const { search, page, sorting, handleSearchChange, handlePageChange, handleSortingChange } =
     useProductPageParams();
 
-  const { products, totalItems, isLoading, handleRefresh, pageSize } = useProductsQuery(
-    search,
-    page,
-    sorting
-  );
+  const { products, totalItems, isLoading, isError, error, handleRefresh, handleRetry, pageSize } =
+    useProductsQuery(search, page, sorting);
 
   const [addModalOpen, setAddModalOpen] = useState(false);
 
@@ -46,12 +43,23 @@ export function ProductPage() {
             </button>
           </div>
         </div>
-        <ProductTable
-          products={products}
-          sorting={sorting}
-          onSortingChange={handleSortingChange}
-          isLoading={isLoading}
-        />
+        {isError ? (
+          <div className={styles.errorBlock}>
+            <p className={styles.errorText}>
+              {error instanceof Error ? error.message : 'Не удалось загрузить товары'}
+            </p>
+            <button type="button" className={styles.retryBtn} onClick={() => handleRetry()}>
+              Повторить
+            </button>
+          </div>
+        ) : (
+          <ProductTable
+            products={products}
+            sorting={sorting}
+            onSortingChange={handleSortingChange}
+            isLoading={isLoading}
+          />
+        )}
         <Pagination
           className={styles.pagination}
           page={page}
@@ -69,7 +77,6 @@ export function ProductPage() {
           <ProgressBar />
         </div>
       )}
-      <Logout />
     </div>
   );
 }
