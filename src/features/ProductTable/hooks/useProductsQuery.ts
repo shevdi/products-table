@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useDebounce } from 'use-debounce';
 import type { SortingState } from '@tanstack/react-table';
-import { fetchProducts } from '@/api/products';
+import { fetchProducts, type SortableColumnId } from '@/api/products';
 
 const PAGE_SIZE = 5;
 const SEARCH_DEBOUNCE_MS = 500;
@@ -17,7 +17,7 @@ function buildFetchParams(
     search: search || undefined,
     limit: PAGE_SIZE,
     skip: (page - 1) * PAGE_SIZE,
-    sortBy: sorting[0]?.id,
+    sortBy: sorting[0]?.id as SortableColumnId | undefined,
     order: sorting[0]?.desc ? ('desc' as const) : ('asc' as const),
     ...(cache && { cache }),
   };
