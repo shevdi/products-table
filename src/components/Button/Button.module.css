@@ -10,8 +10,8 @@
   padding: 0 1.25rem;
   height: 42px;
   font-size: var(--font-size-sm);
-  font-weight: 500;
-  line-height: 1.25;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
   border: 1px solid var(--button-border);
   border-radius: 6px;
   cursor: pointer;
@@ -50,11 +50,13 @@
 .button--sm {
   height: 28px;
   font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 .button--lg {
   height: 54px;
   font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
 }
 
 .button__icon {

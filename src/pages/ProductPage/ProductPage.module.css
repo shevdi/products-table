@@ -1,26 +1,50 @@
 .page {
+  --page-bg: var(--color-gray-50);
+  --page-surface: var(--color-surface);
+  --page-nav-radius: 10px;
+  --page-content-radius: 12px;
+  --page-border: var(--color-border);
+  --page-border-light: var(--color-border-light);
+  --page-header-muted: var(--color-gray-400);
+  --page-title-color: var(--color-gray-900);
+  --page-section-color: var(--color-gray-800);
+  --page-accent: var(--color-blue-500);
+  --page-accent-contrast: var(--color-green-100);
+  --page-selected-accent: var(--color-blue-700);
+  --page-pagination-active: var(--color-purple-700);
+  --page-range-label: var(--color-gray-500);
+
   position: relative;
   width: 100%;
   max-width: 100%;
   min-width: 0;
+  background-color: var(--page-bg);
+  padding: 20px 30px 30px;
 }
 
 .pageContent {
-  padding: 20px;
-  margin: 40px 0;
-  background-color: var(--color-background-white);
+  padding: 30px;
+  margin: 30px 0 0;
+  background-color: var(--page-surface);
+  border-radius: var(--page-content-radius);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-.pageContent > * {
-  max-width: 1900px;
-  margin: 0 auto;
-  justify-content: space-between;
+.pageContent > *:not(.sectionHeader):not(.pagination) {
+  max-width: 100%;
 }
 
 .pageSearch {
-  background-color: var(--color-background-white);
-  margin: 20px 0;
-  padding: 30px 15px 15px;
+  background-color: var(--page-surface);
+  border-radius: var(--page-nav-radius);
+  padding: 24px 30px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .pageSearchContent {
@@ -28,24 +52,23 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0 60px;
-  max-width: 1900px;
+  flex: 1;
+  min-width: 0;
 }
 
-.pageSearch  > * {
-  max-width: 1900px;
-  margin: 0 auto;
+.pageSearch > * {
+  max-width: 100%;
 }
 
 .pageTitle {
   font-size: var(--font-size-lg2);
-  font-weight: 600;
-  color: var(--color-text-primary);
-  margin: 0 0 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--page-title-color);
+  margin: 0;
 }
 
 .pageHeader {
-  margin-bottom: 16px;
-  width: 50%;
+  flex: 1;
   min-width: 300px;
 }
 
@@ -54,14 +77,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 40px;
   flex-wrap: wrap;
 }
 
 .sectionTitle {
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  color: var(--color-text-primary);
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-1);
+  color: var(--page-section-color);
   margin: 0;
 }
 
@@ -77,31 +100,31 @@
   justify-content: center;
   width: 42px;
   height: 42px;
-  padding: 0;
-  background-color: transparent;
-  border: 1px solid var(--color-border);
-  border-radius: 5px;
+  padding: 10px;
+  background-color: var(--page-surface);
+  border: 1px solid var(--page-border-light);
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 18px;
   color: var(--color-text-primary);
 }
 
 .refreshBtn:hover {
-  background-color: var(--color-border);
+  background-color: var(--color-muted);
 }
 
 .addBtn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
   padding: 10px 20px;
-  background-color: var(--color-primary);
-  color: var(--color-primary-contrast);
+  min-height: 42px;
+  background-color: var(--page-accent);
+  color: var(--page-accent-contrast);
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
 }
 
@@ -118,12 +141,22 @@
 }
 
 .pagination {
-  margin-top: 50px;
+  padding: 11px 0 0;
+  border-top: 1px solid transparent;
+}
+
+.pageContent .pagination {
+  --pagination-active-bg: var(--page-pagination-active);
+  --pagination-range-label: var(--page-range-label);
+  --pagination-page-size: 30px;
+  --pagination-page-radius: 4px;
+  --pagination-page-border: var(--page-border-light);
+  --pagination-nav-gap: 8px;
 }
 
 .modalTitle {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
   margin: 0 0 20px;
 }
@@ -153,7 +186,7 @@
   border: none;
   border-radius: 8px;
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
 }
 

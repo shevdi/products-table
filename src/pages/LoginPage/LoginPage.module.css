@@ -1,20 +1,18 @@
-/* Login page - Figma design tokens */
+/* Login page - page-scoped tokens */
 .page {
-  --login-card-width: 527px;
-  --login-card-height: 716px;
-  --login-card-radius: 40px;
-  --login-card-inner-radius: 34px;
-  --login-card-shadow: 0 24px 32px rgba(0, 0, 0, 0.04);
-  --login-border: #ededed;
-  --login-text: #232323;
-  --login-text-muted: #e0e0e0;
-  --login-text-secondary: #9c9c9c;
-  --login-accent: #2436db;
-  --login-accent-border: #367aff;
-  --login-input-height: 55px;
-  --login-input-radius: 12px;
-  --login-gap: 32px;
-  --login-form-gap: 20px;
+  --page-card-width: 527px;
+  --page-card-radius: 40px;
+  --page-card-inner-radius: 34px;
+  --page-card-shadow: 0 24px 32px rgba(0, 0, 0, 0.04);
+  --page-border: var(--color-gray-275);
+  --page-text: var(--color-gray-900);
+  --page-text-muted: var(--color-gray-250);
+  --page-footer: var(--color-gray-700);
+  --page-accent: var(--color-blue-600);
+  --page-accent-border: var(--color-blue-400);
+  --page-input-radius: 12px;
+  --page-gap: 32px;
+  --page-form-gap: 20px;
 
   min-height: 100vh;
   display: flex;
@@ -26,26 +24,26 @@
 
 .card {
   width: 100%;
-  max-width: var(--login-card-width);
-  background-color: #fff;
-  border-radius: var(--login-card-radius);
-  box-shadow: var(--login-card-shadow);
+  max-width: var(--page-card-width);
+  background-color: var(--color-surface);
+  border-radius: var(--page-card-radius);
+  box-shadow: var(--page-card-shadow);
   overflow: hidden;
 }
 
 .cardInner {
   display: flex;
   flex-direction: column;
-  gap: var(--login-gap);
+  gap: var(--page-gap);
   min-height: 100%;
-  padding: 48px 58px 48px 48px;
+  padding: 48px;
   background: linear-gradient(
-    90deg,
+    180deg,
     rgba(35, 35, 35, 0.03) 0%,
-    rgba(35, 35, 35, 0) 50%
+    rgba(35, 35, 35, 0) 100%
   );
-  border: 1px solid var(--login-border);
-  border-radius: var(--login-card-inner-radius);
+  border: 1px solid var(--page-border);
+  border-radius: var(--page-card-inner-radius);
 }
 
 @media (max-width: 600px) {
@@ -66,13 +64,17 @@
   width: 52px;
   height: 52px;
   margin: 0 auto;
-  border: 2px solid #fff;
+  border: 1px solid rgba(237, 237, 237, 0.7);
   border-radius: 100px;
   box-shadow:
     0 12px 8px rgba(0, 0, 0, 0.03),
-    0 0 2px #fff;
-  border: 1px solid transparent;
-  background: linear-gradient(rgba(35, 35, 35, 0.06), #fff);
+    0 0 0 2px #fff;
+  background: linear-gradient(
+      0deg,
+      rgba(35, 35, 35, 0) 50%,
+      rgba(35, 35, 35, 0.06) 100%
+    ),
+    linear-gradient(90deg, #fff 0%, #fff 100%);
 }
 
 .logoWrapper svg {
@@ -89,22 +91,23 @@
 
 .title {
   font-size: var(--font-size-2xl);
-  font-weight: 600;
-  line-height: 1.2;
-  color: var(--login-text);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--page-text);
   text-align: center;
 }
 
 .subtitle {
   font-size: var(--font-size-lg);
-  color: var(--login-text-muted);
+  color: var(--page-text-muted);
   text-align: center;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: var(--login-form-gap);
+  gap: var(--page-form-gap);
 }
 
 .formFields {
@@ -128,20 +131,20 @@
 .button {
   width: 100%;
   height: 54px;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: var(--login-input-radius);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--page-input-radius);
   background: linear-gradient(
     180deg,
     transparent 0%,
     rgba(255, 255, 255, 0.12) 100%
   ),
-  var(--login-accent);
-  border: 1px solid var(--login-accent-border);
+  var(--page-accent);
+  border: 1px solid var(--page-accent-border);
   box-shadow:
     inset 0 -2px 1px rgba(0, 0, 0, 0.08),
     0 8px 8px rgba(55, 122, 255, 0.03);
-  color: #fff;
+  color: var(--color-white);
   cursor: pointer;
   transition: opacity 0.15s;
 }
@@ -151,7 +154,7 @@
 }
 
 .button:focus-visible {
-  outline: 2px solid var(--login-accent);
+  outline: 2px solid var(--page-accent);
   outline-offset: 2px;
 }
 
@@ -164,25 +167,31 @@
 .separatorLine {
   flex: 1;
   height: 1px;
-  background-color: var(--login-border);
+  background-color: var(--page-border);
 }
 
 .separatorText {
   font-size: var(--font-size-lg);
-  color: var(--login-text-muted);
+  color: var(--page-text-muted);
 }
 
 .footer {
   font-size: var(--font-size-lg);
-  color: var(--login-text-secondary);
+  color: var(--page-footer);
   text-align: center;
 }
 
 .footerLink {
-  color: var(--login-accent);
-  font-weight: 500;
+  color: var(--page-accent);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: underline;
 }
 
 .footerLink:hover {
-  text-decoration: underline;
+  opacity: 0.9;
+}
+
+.footerLink:focus-visible {
+  outline: 2px solid var(--page-accent);
+  outline-offset: 2px;
 }

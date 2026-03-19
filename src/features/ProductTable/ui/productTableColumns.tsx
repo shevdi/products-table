@@ -34,7 +34,7 @@ export const productTableColumns: ColumnDef<Product, unknown>[] = [
   },
   {
     accessorKey: 'price',
-    header: 'Цена, Р',
+    header: 'Цена, ₽',
     enableSorting: true,
     cell: ({ getValue }) => <PriceCell value={getValue() as number} />,
   },

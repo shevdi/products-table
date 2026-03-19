@@ -18,7 +18,7 @@ export function PasswordToggle() {
       disabled={disabled}
       aria-label={isVisible ? 'Hide password' : 'Show password'}
     >
-      <Icon name={iconName} size={20} />
+      <Icon name={iconName} size={25} />
     </button>
   );
 }

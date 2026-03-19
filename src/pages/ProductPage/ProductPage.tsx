@@ -21,11 +21,15 @@ export function ProductPage() {
         <div className={styles.pageSearchContent}>
           <h1 className={styles.pageTitle}>Товары</h1>
           <div className={styles.pageHeader}>
-            <ProductSearch value={search} onChange={handleSearchChange} />
+            <ProductSearch
+              value={search}
+              onChange={handleSearchChange}
+              className={styles.searchInput}
+            />
           </div>
         </div>
       </div>
-      <div className={styles.pageContent}>
+      <div className={styles.pageContent} data-page="products">
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>Все позиции</h2>
           <div className={styles.sectionActions}>

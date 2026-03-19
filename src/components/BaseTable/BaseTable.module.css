@@ -12,19 +12,22 @@
 }
 
 .baseTable__tr {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--page-border, var(--color-border));
+  border-top: 1px solid var(--page-border, var(--color-border));
   border-left: 3px solid transparent;
+  min-height: 71px;
 }
 
 .baseTable__tr_selected {
-  border-left: 3px solid var(--color-checkbox-checked);
+  border-left: 3px solid var(--page-selected-accent, var(--color-checkbox-checked));
 }
 
 .baseTable__th {
-  padding: 25px 15px;
+  padding: 24px 18px;
   text-align: left;
-  font-weight: 600;
-  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-md);
+  color: var(--page-header-muted, var(--color-text-secondary));
 }
 
 .baseTable__th_sortable {
@@ -32,24 +35,25 @@
 }
 
 .baseTable__th_sortable:hover {
-  color: var(--color-brand-primary-blue);
+  color: var(--color-primary);
 }
 
 .baseTable__headerContent {
   display: flex;
   align-items: center;
-  color: var(--color-text-placeholder);
+  color: inherit;
   gap: 4px;
 }
 
 .baseTable__sortIndicator {
-  font-size: 12px;
-  color: var(--color-brand-primary-blue);
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
 }
 
 .baseTable__td {
-  padding: 11px 16px;
+  padding: 11px 18px;
   color: var(--color-text-primary);
+  vertical-align: middle;
 }
 
 

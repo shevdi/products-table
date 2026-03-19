@@ -90,7 +90,7 @@ export function AuthForm() {
             className={styles.rememberRow}
           >
             <Checkbox.Box />
-            <Checkbox.Label>Запомнить данные</Checkbox.Label>
+            <Checkbox.Label className={styles.rememberLabel}>Запомнить данные</Checkbox.Label>
           </Checkbox.Root>
         )}
       />

@@ -31,7 +31,7 @@ export function Pagination({
     <nav className={clsx(styles.pagination, className)} role="navigation" aria-label="Пагинация">
       <span className={styles.pagination__range}>
         <span className={styles.pagination__rangeLabel}>Показано</span>
-        <span className={styles.pagination__rangeValue}>{start} – {end}</span>
+        <span className={styles.pagination__rangeValue}>{start}-{end}</span>
         <span className={styles.pagination__rangeLabel}>из</span>
         <span className={styles.pagination__rangeValue}>{totalItems}</span>
       </span>

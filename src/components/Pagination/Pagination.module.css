@@ -19,11 +19,11 @@
   flex-wrap: wrap;
   gap: 0 0.25em;
   font-size: var(--font-size-lg);
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
 }
 
 .pagination__rangeLabel {
-  color: var(--color-text-secondary);
+  color: var(--pagination-range-label, var(--color-text-secondary));
 }
 
 .pagination__rangeValue {
@@ -34,7 +34,7 @@
 .pagination__nav {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--pagination-nav-gap, 0.5rem);
   flex-wrap: wrap;
 }
 
@@ -46,7 +46,7 @@
   height: 36px;
   padding: 0 0.5rem;
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: var(--color-text);
   background-color: transparent;
   border: none;
@@ -72,15 +72,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 36px;
-  height: 36px;
+  min-width: var(--pagination-page-size, 36px);
+  height: var(--pagination-page-size, 36px);
   padding: 0 0.5rem;
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: var(--font-weight-regular);
   color: var(--color-text);
   background-color: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
+  border: 1px solid var(--pagination-page-border, var(--color-border));
+  border-radius: var(--pagination-page-radius, 6px);
   cursor: pointer;
   transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 }
@@ -108,6 +108,7 @@
   min-width: 36px;
   height: 36px;
   font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
   color: var(--color-text-secondary);
   pointer-events: none;
 }

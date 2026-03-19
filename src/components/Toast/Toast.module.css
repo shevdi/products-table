@@ -25,13 +25,13 @@
 }
 
 .toast__title {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
 }
 
 .toast__description {
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }
 
@@ -47,8 +47,8 @@
   background: none;
   border: none;
   border-radius: 4px;
-  font-size: 18px;
-  line-height: 1;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-1);
   color: var(--color-text-secondary);
   cursor: pointer;
 }
