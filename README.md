@@ -2,6 +2,9 @@
 
 Веб-приложение для работы со списком товаров: авторизация, просмотр, поиск, сортировка и добавление новых позиций. Сделано с использованием OpenSpec в Cursor. Модель Composer 1.5. О рабочем процессе в [WORKFLOW.MD](./docs/WORKFLOW.MD)
 
+- **Приложение:** https://shevdi.github.io/products-table/ (логин: emilys, пароль: emilyspass)
+- **Storybook:** https://shevdi.github.io/products-table/storybook/
+
 ## Возможности
 
 - **Авторизация** — вход по username с опцией «Запомнить меня» (сессия в localStorage или sessionStorage)
@@ -69,15 +72,6 @@ src/
 ├── components/   # UI-компоненты (Button, Input, Table, Modal, Toast и др.)
 └── shared/       # Типы, стили, утилиты
 ```
-
-## Деплой (GitHub Pages)
-
-При `push` в ветку `main` GitHub Actions собирает проект и публикует его на GitHub Pages.
-
-**Важно:** в настройках репозитория (**Settings → Pages**) выберите **Source: GitHub Actions**.
-
-- **Приложение:** https://shevdi.github.io/products-table/ (логин: emilys, пароль: emilyspass)
-- **Storybook:** https://shevdi.github.io/products-table/storybook/
 
 ## API
 

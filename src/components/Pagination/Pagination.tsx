@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { Icon } from '../Icon';
 import styles from './Pagination.module.css';
 import { getVisiblePages } from './utils';
 
@@ -29,7 +30,10 @@ export function Pagination({
   return (
     <nav className={clsx(styles.pagination, className)} role="navigation" aria-label="Пагинация">
       <span className={styles.pagination__range}>
-        Показано {start}–{end} из {totalItems}
+        <span className={styles.pagination__rangeLabel}>Показано</span>
+        <span className={styles.pagination__rangeValue}>{start} – {end}</span>
+        <span className={styles.pagination__rangeLabel}>из</span>
+        <span className={styles.pagination__rangeValue}>{totalItems}</span>
       </span>
 
       <div className={styles.pagination__nav}>
@@ -40,7 +44,7 @@ export function Pagination({
           disabled={isFirstPage}
           aria-label="Предыдущая страница"
         >
-          &lt;
+          <Icon name="caret-left" size={20} />
         </button>
 
         {visiblePages.map((item, index) =>
@@ -72,7 +76,7 @@ export function Pagination({
           disabled={isLastPage}
           aria-label="Следующая страница"
         >
-          &gt;
+          <Icon name="caret-right" size={20} />
         </button>
       </div>
     </nav>

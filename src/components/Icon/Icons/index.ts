@@ -1,5 +1,7 @@
 import type { ComponentType, SVGProps } from 'react';
 import type { IconName } from '../Icon.types';
+import CaretLeftIcon from './CaretLeft.svg?react';
+import CaretRightIcon from './CaretRight.svg?react';
 import SearchIcon from './SearchIcon.svg?react';
 import ReloadIcon from './ReloadIcon.svg?react';
 import PlusCircleIcon from './PlusCircleIcon.svg?react';
@@ -14,6 +16,8 @@ import PlusClickIcon from './PlusClickIcon.svg?react';
 import ArrowsClockwiseIcon from './ArrowsClockwise.svg?react';
 
 export const iconComponents: Record<IconName, ComponentType<SVGProps<SVGSVGElement>>> = {
+  'caret-left': CaretLeftIcon,
+  'caret-right': CaretRightIcon,
   search: SearchIcon,
   reload: ReloadIcon,
   eye: EyeIcon,

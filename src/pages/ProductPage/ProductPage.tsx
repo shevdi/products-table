@@ -6,22 +6,14 @@ import { ProgressBar, Pagination, Icon, Modal } from '@/components';
 import styles from './ProductPage.module.css';
 
 export function ProductPage() {
-  const {
+  const { search, page, sorting, handleSearchChange, handlePageChange, handleSortingChange } =
+    useProductPageParams();
+
+  const { products, totalItems, isLoading, handleRefresh, pageSize } = useProductsQuery(
     search,
     page,
-    sorting,
-    handleSearchChange,
-    handlePageChange,
-    handleSortingChange,
-  } = useProductPageParams();
-
-  const {
-    products,
-    totalItems,
-    isLoading,
-    handleRefresh,
-    pageSize,
-  } = useProductsQuery(search, page, sorting);
+    sorting
+  );
 
   const [addModalOpen, setAddModalOpen] = useState(false);
 
@@ -54,7 +46,6 @@ export function ProductPage() {
             </button>
           </div>
         </div>
-        {isLoading && <ProgressBar />}
         <ProductTable
           products={products}
           sorting={sorting}

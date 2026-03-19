@@ -48,17 +48,25 @@
 
 .productTable__actions {
   display: flex;
-  gap: 8px;
+  gap: 20px;
   align-items: center;
 }
 
 .productTable__actionBtn {
+  flex-shrink: 0;
   min-width: 36px;
   padding: 8px;
   border: none;
+  color: var(--color-text-placeholder);
+}
+
+.productTable__actionBtn:hover:not(:disabled),
+.productTable__iconBtn:hover:not(:disabled) {
+  opacity: 0.7;
 }
 
 .productTable__iconBtn {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -68,4 +76,20 @@
   border: none;
   cursor: pointer;
   color: inherit;
+}
+
+/* Price cell: integer part dark/large, decimal part lighter/smaller */
+.productTable__price {
+  display: inline;
+  font-variant-numeric: tabular-nums;
+}
+
+.productTable__priceInteger {
+  color: var(--color-text-primary);
+  font-size: inherit;
+}
+
+.productTable__priceDecimal {
+  color: var(--color-text-secondary);
+  vertical-align: baseline;
 }

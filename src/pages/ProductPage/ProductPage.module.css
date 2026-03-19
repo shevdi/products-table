@@ -7,25 +7,25 @@
 
 .pageContent {
   padding: 20px;
-  margin: 20px 0;
+  margin: 40px 0;
   background-color: var(--color-background-white);
 }
 
 .pageContent > * {
   max-width: 1900px;
   margin: 0 auto;
-  padding: 30px 0;
   justify-content: space-between;
 }
 
 .pageSearch {
   background-color: var(--color-background-white);
   margin: 20px 0;
-  padding: 20px;
+  padding: 30px 15px 15px;
 }
 
 .pageSearchContent {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 0 60px;
   max-width: 1900px;
@@ -34,11 +34,10 @@
 .pageSearch  > * {
   max-width: 1900px;
   margin: 0 auto;
-  padding: 30px 0;
 }
 
 .pageTitle {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg2);
   font-weight: 600;
   color: var(--color-text-primary);
   margin: 0 0 16px;
@@ -55,12 +54,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 40px;
   flex-wrap: wrap;
 }
 
 .sectionTitle {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-lg);
   font-weight: 600;
   color: var(--color-text-primary);
   margin: 0;
@@ -76,8 +75,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   padding: 0;
   background-color: transparent;
   border: 1px solid var(--color-border);
@@ -95,8 +94,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 8px 16px;
+  gap: 20px;
+  padding: 10px 20px;
   background-color: var(--color-primary);
   color: var(--color-primary-contrast);
   border: none;
@@ -119,7 +118,7 @@
 }
 
 .pagination {
-  margin-top: 16px;
+  margin-top: 50px;
 }
 
 .modalTitle {

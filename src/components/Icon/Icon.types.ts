@@ -1,4 +1,6 @@
 export const ICON_NAMES = [
+  'caret-left',
+  'caret-right',
   'search',
   'reload',
   'plus-circle',

@@ -2,6 +2,7 @@
   --font-size-sm: 14px;
   --font-size-md: 16px;
   --font-size-lg: 18px;
+  --font-size-lg2: 24px;
   --font-size-xl: 30px;
   --font-size-2xl: 40px;
 
@@ -10,7 +11,7 @@
   --color-background-light: #F8F8F8;
   --color-border-light: #E0E0E0;
   --color-text-placeholder: #AAAAAA;
-  --color-text-secondary: #555555;
+  --color-text-secondary: #AAAAAA;
   --color-text-primary: #333333;
 
   /* Brand/Accent */

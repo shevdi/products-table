@@ -47,10 +47,6 @@
   border-color: var(--button-border);
 }
 
-.button--secondary:hover:not(:disabled) {
-  background-color: var(--color-muted);
-}
-
 .button--sm {
   height: 28px;
   font-size: var(--font-size-sm);
