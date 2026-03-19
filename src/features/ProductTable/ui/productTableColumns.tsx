@@ -17,6 +17,7 @@ export const productTableColumns: ColumnDef<Product, unknown>[] = [
   {
     accessorKey: 'brand',
     header: 'Вендор',
+    cell: ({ getValue }) => <strong>{getValue() as string}</strong>,
     enableSorting: true,
   },
   {

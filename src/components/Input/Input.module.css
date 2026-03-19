@@ -98,7 +98,7 @@
 .input__label {
   display: block;
   margin-bottom: 6px;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-lg);
   font-weight: 500;
   color: var(--color-text);
 }

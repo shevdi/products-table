@@ -13,7 +13,7 @@ export function LoginPage() {
           </div>
 
           <header className={styles.header}>
-            <h1 className={styles.title}>Авторизация</h1>
+            <h1 className={styles.title}>Добро пожаловать!</h1>
             <p className={styles.subtitle}>Пожалуйста, авторизуйтесь</p>
           </header>
 
