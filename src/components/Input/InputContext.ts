@@ -4,6 +4,7 @@ export type InputSize = 'sm' | 'md';
 
 export interface InputContextValue {
   id: string;
+  errorId: string;
   value: string;
   onChange: (value: string) => void;
   error?: string;

@@ -2,11 +2,15 @@ import { useInputContext } from './InputContext';
 import styles from './Input.module.css';
 
 export function Error() {
-  const { error } = useInputContext();
+  const { error, errorId } = useInputContext();
 
   if (!error) {
     return null;
   }
 
-  return <span className={styles.input__error}>{error}</span>;
+  return (
+    <span id={errorId} role="alert" className={styles.input__error}>
+      {error}
+    </span>
+  );
 }

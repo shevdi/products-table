@@ -30,7 +30,9 @@ const mapApiProduct = (p: ApiProduct): Product => ({
   thumbnail: p.thumbnail,
 });
 
-const COLUMN_TO_API_FIELD: Record<string, string> = {
+export type SortableColumnId = 'name' | 'brand' | 'sku' | 'rating' | 'price';
+
+const COLUMN_TO_API_FIELD: Record<SortableColumnId, string> = {
   name: 'title',
   brand: 'brand',
   sku: 'sku',
@@ -42,7 +44,7 @@ export async function fetchProducts(params?: {
   search?: string;
   limit?: number;
   skip?: number;
-  sortBy?: string;
+  sortBy?: SortableColumnId;
   order?: 'asc' | 'desc';
   cache?: RequestCache;
 }): Promise<{ products: Product[]; total: number }> {

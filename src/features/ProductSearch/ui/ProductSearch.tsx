@@ -12,7 +12,7 @@ export function ProductSearch({ value = '', onChange }: ProductSearchProps) {
         <Input.Slot>
           <Icon name="search" size={20} />
         </Input.Slot>
-        <Input.Field placeholder="Поиск товаров" />
+        <Input.Field placeholder="Поиск товаров" aria-label="Поиск товаров" />
       </Input.Box>
     </Input.Root>
   );

@@ -12,10 +12,12 @@ export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
 ) {
   const {
     id,
+    errorId,
     value: contextValue,
     onChange: contextOnChange,
     disabled: contextDisabled,
     fieldType,
+    error,
   } = useInputContext();
 
   const isControlled = valueProp !== undefined;
@@ -41,6 +43,8 @@ export const Field = forwardRef<HTMLInputElement, FieldProps>(function Field(
       disabled={disabled ?? contextDisabled}
       className={clsx(styles.input__field, className)}
       {...props}
+      aria-invalid={!!error}
+      aria-describedby={error ? errorId : undefined}
     />
   );
 });

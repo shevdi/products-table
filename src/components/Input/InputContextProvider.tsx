@@ -22,6 +22,7 @@ export function InputContextProvider({
   type: fieldTypeProp = 'text',
 }: InputContextProviderProps) {
   const id = useId();
+  const errorId = useId();
   const [value, setFieldValue] = useControlledState(
     controlledValue,
     controlledOnChange,
@@ -42,6 +43,7 @@ export function InputContextProvider({
 
   const ctxValue: InputContextValue = {
     id,
+    errorId,
     value,
     onChange,
     error,

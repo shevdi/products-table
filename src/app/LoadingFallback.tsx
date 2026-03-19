@@ -1,6 +1,8 @@
 export function LoadingFallback() {
   return (
     <div
+      role="status"
+      aria-live="polite"
       style={{
         display: 'flex',
         alignItems: 'center',

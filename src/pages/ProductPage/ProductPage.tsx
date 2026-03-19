@@ -37,7 +37,12 @@ export function ProductPage() {
             >
               <Icon name="reload" size={20} />
             </button>
-            <button type="button" className={styles.addBtn} onClick={() => setAddModalOpen(true)}>
+            <button
+              type="button"
+              className={styles.addBtn}
+              aria-label="Добавить товар"
+              onClick={() => setAddModalOpen(true)}
+            >
               <Icon name="plus-circle" size={20} />
               Добавить
             </button>

@@ -15,6 +15,12 @@ export interface LoginError {
   message: string;
 }
 
+export type AuthApiResponse = LoginResponse | LoginError;
+
+function isLoginError(data: AuthApiResponse): data is LoginError {
+  return !('accessToken' in data);
+}
+
 export type LoginResult =
   | { ok: true; data: LoginResponse }
   | { ok: false; error: string };
@@ -30,15 +36,19 @@ export async function login(
       body: JSON.stringify({ username, password }),
     });
 
-    const data = await res.json();
+    const data: AuthApiResponse = await res.json();
 
     if (!res.ok) {
       const message =
-        (data as LoginError).message ?? `Ошибка авторизации: ${res.status}`;
+        (isLoginError(data) ? data.message : null) ?? `Ошибка авторизации: ${res.status}`;
       return { ok: false, error: message };
     }
 
-    return { ok: true, data: data as LoginResponse };
+    if (isLoginError(data)) {
+      return { ok: false, error: data.message ?? 'Ошибка авторизации' };
+    }
+
+    return { ok: true, data };
   } catch (err) {
     const message =
       err instanceof Error ? err.message : 'Не удалось подключиться к серверу';
