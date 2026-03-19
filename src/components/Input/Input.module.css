@@ -25,9 +25,7 @@
 }
 
 .input:focus-within {
-  --input-border: var(--color-primary);
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
+  --input-border: var(--color-gray-400);
 }
 
 .input--error {
